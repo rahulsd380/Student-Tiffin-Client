@@ -2,34 +2,19 @@ import { Link, useLocation } from "react-router-dom";
 import Container from "../Container/Container";
 import { ICONS } from "../../../assets";
 import { useEffect, useRef, useState } from "react";
-import { navLinks } from "./navlinks";
+import { dropdownLinks, navLinks } from "./navlinks";
 
 const Navbar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  const dropDownRef = useRef(null);
-
-  const dropdownLinks = [
-    {
-      label: "Profile",
-      path: "/",
-      icon: ICONS.user,
-    },
-    {
-      label: "Recent Orders",
-      path: "/",
-      icon: ICONS.recentOrders,
-    },
-    {
-      label: "Subscription",
-      path: "/",
-      icon: ICONS.subscription,
-    },
-  ];
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const close = (e) => {
-      if (dropDownRef.current && !dropDownRef.current.contains(e.target)) {
+    const close = (e: MouseEvent) => {
+      if (
+        dropDownRef.current &&
+        !dropDownRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
       }
     };

@@ -1,8 +1,11 @@
+import Hero from "../../components/HomePageComponents/Hero/Hero";
+import Logos from "../../components/HomePageComponents/Hero/Logos";
 
 const Home = () => {
     return (
         <div>
-            Home
+            <Hero/>
+            <Logos/>
         </div>
     );
 };

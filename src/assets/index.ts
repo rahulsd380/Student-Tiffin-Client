@@ -9,7 +9,7 @@ import star from "../assets/icons/start-shape.svg";
 
 
 // Import IMAGES here
-import heroImg from "../assets/icons/subscription.svg";
+import heroImg from "../assets/images/hero-img.png";
 
 
 export const ICONS = {
