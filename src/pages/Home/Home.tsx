@@ -1,6 +1,7 @@
 import BringingComfort from "../../components/HomePageComponents/BringingComfort/BringingComfort";
 import Hero from "../../components/HomePageComponents/Hero/Hero";
 import Logos from "../../components/HomePageComponents/Hero/Logos";
+import SubscriptionPlans from "../../components/HomePageComponents/SubscriptionPlans/SubscriptionPlans";
 import Testimonials from "../../components/HomePageComponents/Testimonials/Testimonials";
 import WhyChooseUS from "../../components/HomePageComponents/WhyChooseUS/WhyChooseUS";
 
@@ -12,6 +13,7 @@ const Home = () => {
             <BringingComfort/>
             <Testimonials/>
             <WhyChooseUS/>
+            <SubscriptionPlans/>
         </div>
     );
 };

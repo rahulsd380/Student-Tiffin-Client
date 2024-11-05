@@ -24,7 +24,7 @@ const WhyChooseUS = () => {
             Why Choose Student Tiffin?
           </h1>
 
-          <div className="flex items-center gap-[64px]">
+          <div className="flex items-center justify-center gap-[64px]">
             {
                 items.map((item, index) => 
                     <div key={index} className="flex flex-col gap-12">
