@@ -15,7 +15,8 @@
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.53.1",
     "react-router-dom": "^6.27.0",
-    "sooner": "^1.1.4"
+    "sooner": "^1.1.4",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

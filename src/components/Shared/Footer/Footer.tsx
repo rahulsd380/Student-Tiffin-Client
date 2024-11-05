@@ -64,7 +64,7 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="bg-[#13161C] py-[64px]">
+    <div className="bg-[#13161C] py-[64px] font-Poppins">
       <Container>
         <div className="font-Poppins flex gap-[96px]">
           {/* Let’s Get Together */}
@@ -127,7 +127,7 @@ const Footer = () => {
             <h1 className="text-white font-semibold text-2xl leading-8">
               Subscribe to the newsletter.
             </h1>
-            <div className="flex flex-col gap-4 mt-7">
+            <div className="flex flex-col gap-2 mt-7">
               <input
                 type="text"
                 name=""
@@ -141,6 +141,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        <hr className="border border-[#ffffff26] h-[1px] my-9" />
+        <p className="text-[#ffffffb3] leading-5">
+        © Student Tiffin Limited 2024 | All Rights Reserved
+                  </p>
       </Container>
     </div>
   );
