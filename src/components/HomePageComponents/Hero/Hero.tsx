@@ -22,7 +22,7 @@ const Hero = () => {
           <img
             src={IMAGES.heroImg}
             alt="dish-image"
-            className="max-w-[448px] max-h-[474px]"
+            className="w-full max-w-[350px] md:max-w-[448px] max-h-[370px] mdLmax-h-[474px]"
           />
         </div>
       </Container>
