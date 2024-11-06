@@ -41,18 +41,18 @@ const Testimonials = () => {
   }, [nextSlider]);
 
   return (
-    <div className="bg-[#DE3C4B] py-[96px] relative">
-      <img src={ICONS.stripTop} alt="" className="absolute -top-3" />
-      <img src={ICONS.stripDown} alt="" className="absolute -bottom-3" />
+    <div className="bg-[#DE3C4B] py-12 md:py-[96px] relative">
+      <img src={ICONS.stripTop} alt="" className="absolute -top-1 md:-top-2 xl:-top-3" />
+      <img src={ICONS.stripDown} alt="" className="absolute -bottom-1 md:-bottom-2 xl:-bottom-3" />
       <Container>
-        <div className="font-Poppins">
+        <div className="font-Poppins px-6 md:px-10 xl:px-0">
           <div className="px-6 py-3 rounded-[100px] border border-white text-white font-semibold leading-5 uppercase tracking-tighter w-fit mx-auto">
             WHAT OTHERS SAY ABOUT US
           </div>
 
-          <div className="flex items-center justify-center gap-[63px] mt-12 relative mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-[63px] mt-12 relative mx-auto">
             {/* Left arrow */}
-            <button onClick={prevSlider} className="size-[52px] rounded-full bg-white flex items-center justify-center">
+            <button onClick={prevSlider} className="size-[52px] rounded-full bg-white hidden md:flex items-center justify-center">
               <img src={ICONS.leftArrow} alt="left-arrow" />
             </button>
 
@@ -63,13 +63,13 @@ const Testimonials = () => {
               >
                 {/* Testimonial Card */}
                 {reviews.map((review, index) => (
-                  <div className="flex items-center gap-5 min-w-full" key={index}>
+                  <div className="flex flex-col md:flex-row items-center gap-5 min-w-full" key={index}>
                     <img src={review.profileImg} alt="user" className="size-[96px] rounded-full" />
                     <div>
-                      <h1 className="text-white text-xl font-semibold leading-7 tracking-tighter max-w-[448px]">
+                      <h1 className="text-white text-center md:text-start text-xl font-semibold leading-7 tracking-tighter max-w-[448px]">
                         “{review.review}”
                       </h1>
-                      <p className="text-[#F8D8DB] leading-7 tracking-tighter mt-2">{review.name}</p>
+                      <p className="text-[#F8D8DB] text-center md:text-start leading-7 tracking-tighter mt-2">{review.name}</p>
                     </div>
                   </div>
                 ))}
@@ -77,9 +77,21 @@ const Testimonials = () => {
             </div>
 
             {/* Right arrow */}
+            <button onClick={nextSlider} className="size-[52px] rounded-full bg-white hidden md:flex items-center justify-center">
+              <img src={ICONS.rightArrow} alt="right-arrow" />
+            </button>
+
+
+            <div className="flex md:hidden items-center gap-2">
+               {/* Left arrow */}
+            <button onClick={prevSlider} className="size-[52px] rounded-full bg-white flex items-center justify-center">
+              <img src={ICONS.leftArrow} alt="left-arrow" />
+            </button>
+               {/* Right arrow */}
             <button onClick={nextSlider} className="size-[52px] rounded-full bg-white flex items-center justify-center">
               <img src={ICONS.rightArrow} alt="right-arrow" />
             </button>
+            </div>
           </div>
         </div>
       </Container>

@@ -64,9 +64,9 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="bg-[#13161C] py-[64px] font-Poppins">
+    <div className="bg-[#13161C] py-[64px] font-Poppins px-6 md:px-10 xl:px-0">
       <Container>
-        <div className="font-Poppins flex gap-[96px]">
+        <div className="font-Poppins flex flex-col xl:flex-row gap-12 md:gap-[96px]">
           {/* Let’s Get Together */}
           <div className="w-full">
             <h1 className="text-white font-semibold text-2xl leading-8">

@@ -4,7 +4,7 @@ import Badge from "../../Shared/Badge/Badge";
 
 const PlanCard = ({ data }:{data:any}) => {
   return (
-    <div className="bg-white border border-[#0000001a] rounded-3xl font-Poppins py-5">
+    <div className="bg-white w-full border border-[#0000001a] rounded-3xl font-Poppins py-5">
       <div className="flex items-center justify-between px-6">
         <h1 className="text-[#030] text-2xl font-semibold leading-8">
           {data.name}

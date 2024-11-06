@@ -3,6 +3,7 @@ import Container from "../Container/Container";
 import { ICONS } from "../../../assets";
 import { useEffect, useRef, useState } from "react";
 import { dropdownLinks, navLinks } from "./navlinks";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = () => {
   const location = useLocation();
@@ -23,13 +24,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-white py-4 border-b border-[#E6E6E6]">
+    <div className="bg-white px-5 md:px-10 xl:px-0 py-4 border-b border-[#E6E6E6]">
       <Container>
         <div className="font-Poppins flex items-center justify-between">
           <h1 className="font-semibold leading-5">Student Tiffin</h1>
 
           {/* Navlinks */}
-          <div className="flex items-center gap-11 relative">
+          <div className="flex items-center gap-5 md:gap-8 xl:gap-11 relative">
+            <div className="hidden md:flex items-center gap-8 xl:gap-11">
             {navLinks.map((link, index) => (
               <a
                 key={index}
@@ -43,6 +45,7 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            </div>
             <img
               onClick={() => setOpen(!open)}
               src={ICONS.user}
@@ -87,6 +90,8 @@ const Navbar = () => {
                 Sign Out
               </button>
             </div>
+
+            <HamburgerMenu/>
           </div>
         </div>
       </Container>

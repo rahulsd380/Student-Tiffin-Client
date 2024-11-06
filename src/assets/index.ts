@@ -15,6 +15,7 @@ import email from "../assets/icons/email.svg";
 import stripDown from "../assets/icons/strip-down.svg";
 import stripTop from "../assets/icons/strip-top.svg";
 import tickMark from "../assets/icons/tick-mark.svg";
+import menu from "../assets/icons/menu.svg";
 
 
 
@@ -43,6 +44,7 @@ export const ICONS = {
     stripTop,
     stripDown,
     tickMark,
+    menu,
  
 };
 

@@ -65,8 +65,8 @@ const SubscriptionPlans = () => {
 
   return (
     <Container>
-      <div className="flex flex-col gap-12 py-[128px]">
-        <h1 className="text-[#DE3C4B] text-[96px] font-extrabold leading-[110px] uppercase text-center">
+      <div className="flex flex-col gap-12 py-[96px] md:py-[128px] px-6 md:px-10 xl:px-0">
+        <h1 className="text-[#DE3C4B] text-[46px] md:text-[96px] font-extrabold leading-[64px] md:leading-[110px] uppercase text-center">
           Subscription Plans
         </h1>
 
@@ -85,7 +85,7 @@ const SubscriptionPlans = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
           {planMode === "Daily"
             ? dailyData.map((data) => <PlanCard data={data} />)
             : planMode === "Weekly"
