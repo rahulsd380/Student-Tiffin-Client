@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="font-Poppins flex flex-col xl:flex-row items-center md:items-start xl:items-center gap-[64px] xl:gap-5 pt-[42px] md:pt-[52px] xl:pt-[150px] pb-[64px] md:pb-[96px] xl:pb-[200px] px-5 md:px-10 xl:px-0">
           <div>
             <h1 className="text-[#293241] text-[36px] md:text-[72px] font-extrabold leading-[44px] md:leading-[80px] -tracking-[1px] max-w-[350px] md:max-w-[752px] lg:max-w-full">
-              Experience Fresh, Authentic Indian Meals Daily.
+              Experience Fresh, Authentic Indian Meals.
             </h1>
 
             <p className="text-[#424B54] text-lg md:text-2xl leading-6 md:leading-9 max-w-[350px] md:max-w-[549px] mt-3">

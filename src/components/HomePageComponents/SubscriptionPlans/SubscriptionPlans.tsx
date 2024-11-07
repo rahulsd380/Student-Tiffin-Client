@@ -17,7 +17,7 @@ const SubscriptionPlans = () => {
     },
     {
       name: "Vegeterian Meal (weekly)",
-      foodCategory: "Non Veg",
+      foodCategory: "Meat",
       madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
       discountedPrice: "€20",
       priceBefore: "€36",
@@ -36,7 +36,7 @@ const SubscriptionPlans = () => {
     },
     {
       name: "Vegeterian Meal (monthly)",
-      foodCategory: "Non Veg",
+      foodCategory: "Meat",
       madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
       discountedPrice: "€20",
       priceBefore: "€36",

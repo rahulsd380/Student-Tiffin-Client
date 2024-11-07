@@ -5,7 +5,7 @@ const WhyChooseUS = () => {
   const items = [
     {
       img: IMAGES.tiffinImg1,
-      description: "Authentic Indian flavors delivered fresh daily.",
+      description: "Authentic Indian flavors delivered fresh.",
     },
     {
       img: IMAGES.tiffinImg2,

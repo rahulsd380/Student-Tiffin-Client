@@ -13,7 +13,7 @@ const BringingComfort = () => {
           </h1>
 
           <p className="text-[#424B54] text-lg md:text-2xl leading-6 md:leading-9 max-w-[310px] md:max-w-[688px] xl:max-w-[716px] mt-3">
-          At Student Tiffin, we deliver authentic Indian meals made from family recipes. Enjoy healthy, delicious food without the hassle of cooking. We deliver daily because food and hunger don’t take a holiday 😉  .
+          At Student Tiffin, we deliver authentic Indian meals made from family recipes. Enjoy healthy, delicious food without the hassle of cooking. We deliver because food and hunger don’t take a holiday 😉  .
           </p>
 
           <button className="px-8 py-4 text-white bg-primary-gradient shadow-custom-shadow border border-white-opacity-25 rounded-2xl text-xl leading-5 font-semibold tracking-tighter mt-6">
