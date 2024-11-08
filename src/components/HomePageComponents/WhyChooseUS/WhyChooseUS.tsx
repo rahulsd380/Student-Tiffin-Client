@@ -20,7 +20,7 @@ const WhyChooseUS = () => {
     <div className="bg-[#293241] py-[150px]">
       <Container>
         <div className="flex flex-col gap-[96px]">
-          <h1 className="text-[#FBF5F3] text-[56px] md:text-[96px] font-extrabold leading-[64px] md:leading-[110px] uppercase text-center">
+          <h1 className="text-[#FBF5F3] font-Rajdhani text-[56px] md:text-[96px] font-bold leading-[64px] md:leading-[110px] uppercase text-center">
             Why Choose Student Tiffin?
           </h1>
 

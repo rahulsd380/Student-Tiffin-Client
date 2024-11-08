@@ -10,15 +10,17 @@ const Footer = () => {
     },
     {
       icon: ICONS.clock,
-      info: "Everyday: 9 AM - 7PM",
+      info: "Everyday: 11 AM - 2.30 PM",
     },
     {
       icon: ICONS.phone,
       info: "+123 4 567 890",
+      href: "tel:+123 4 567 890",
     },
     {
       icon: ICONS.email,
-      info: "hello@studenttiffin.com",
+      info: "studentstiffin@gmail.com",
+      href: "mailto:studentstiffin@gmail.com",
     },
   ];
 
@@ -46,14 +48,14 @@ const Footer = () => {
   ];
 
   const followUsInfo = [
-    {
-      label: "X",
-      path: "/",
-    },
-    {
-      label: "YouTube",
-      path: "/menu",
-    },
+    // {
+    //   label: "X",
+    //   path: "/",
+    // },
+    // {
+    //   label: "YouTube",
+    //   path: "/menu",
+    // },
     {
       label: "Facebook",
       path: "/about",
@@ -78,9 +80,27 @@ const Footer = () => {
                   <div className="p-2 bg-[#ffffff26] rounded-full flex items-center justify-center size-10">
                     <img src={info.icon} alt="" className="size-6" />
                   </div>
-                  <p className="text-[#ffffffcc] leading-6 w-[312px]">
-                    {info.info}
-                  </p>
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className="text-[#ffffffcc] leading-6 w-[312px] hover:underline"
+                      // Only add target="_blank" for non-phone links
+                      target={
+                        info.href.startsWith("tel:") ? undefined : "_blank"
+                      }
+                      rel={
+                        info.href.startsWith("tel:")
+                          ? undefined
+                          : "noopener noreferrer"
+                      }
+                    >
+                      {info.info}
+                    </a>
+                  ) : (
+                    <span className="text-[#ffffffcc] leading-6 w-[312px]">
+                      {info.info}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
@@ -144,8 +164,8 @@ const Footer = () => {
 
         <hr className="border border-[#ffffff26] h-[1px] my-9" />
         <p className="text-[#ffffffb3] leading-5">
-        © Student Tiffin Limited 2024 | All Rights Reserved
-                  </p>
+          © Student Tiffin Limited 2024 | All Rights Reserved
+        </p>
       </Container>
     </div>
   );

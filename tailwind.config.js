@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
+        Rajdhani: ["Rajdhani", "sans-serif"],
       },
       backgroundImage: {
         'primary-gradient': 'linear-gradient(180deg, #DE3C4B 0%, #B43642 100%)',
