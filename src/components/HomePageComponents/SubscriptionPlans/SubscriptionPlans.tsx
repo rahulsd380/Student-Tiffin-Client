@@ -251,6 +251,8 @@ const SubscriptionPlans = () => {
             : monthlyData.map((data) => <PlanCard data={data} isDeliverySelected={isDeliverySelected} />)}
         </div>
 
+        <p>**Delivery everyday (Except Sunday)</p>
+
         {/* Plan cards */}
       </div>
     </Container>
