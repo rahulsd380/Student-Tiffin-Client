@@ -16,7 +16,9 @@ import stripDown from "../assets/icons/strip-down.svg";
 import stripTop from "../assets/icons/strip-top.svg";
 import tickMark from "../assets/icons/tick-mark.svg";
 import menu from "../assets/icons/menu.svg";
-import infoIcon from "../assets/icons/info-icon.svg";
+import infoIconGray from "../assets/icons/info-icon-gray.svg";
+import infoIconRed from "../assets/icons/info-icon-red.svg";
+import pointer from "../assets/icons/pointer.svg";
 
 
 
@@ -46,7 +48,9 @@ export const ICONS = {
     stripDown,
     tickMark,
     menu,
-    infoIcon,
+    infoIconGray,
+    infoIconRed,
+    pointer,
  
 };
 

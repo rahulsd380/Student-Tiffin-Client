@@ -1,70 +1,8 @@
 import { Link } from "react-router-dom";
-import { ICONS } from "../../../assets";
 import Container from "../Container/Container";
+import { contactInfo, followUsInfo, quickLinks } from "./footer.constants";
 
 const Footer = () => {
-  const contactInfo = [
-    {
-      icon: ICONS.location,
-      info: "Spade Enterprise Centre, North King Street, Smithfield,  Dublin 7",
-    },
-    {
-      icon: ICONS.clock,
-      info: "Everyday: 11 AM - 2.30 PM",
-    },
-    {
-      icon: ICONS.phone,
-      info: "+123 4 567 890",
-      href: "tel:+123 4 567 890",
-    },
-    {
-      icon: ICONS.email,
-      info: "studentstiffin@gmail.com",
-      href: "mailto:studentstiffin@gmail.com",
-    },
-  ];
-
-  const quickLinks = [
-    {
-      label: "Home",
-      path: "/",
-    },
-    {
-      label: "Menu",
-      path: "/menu",
-    },
-    {
-      label: "About",
-      path: "/about",
-    },
-    {
-      label: "Contact",
-      path: "/contact",
-    },
-    {
-      label: "Subscription",
-      path: "/subscription",
-    },
-  ];
-
-  const followUsInfo = [
-    // {
-    //   label: "X",
-    //   path: "/",
-    // },
-    // {
-    //   label: "YouTube",
-    //   path: "/menu",
-    // },
-    {
-      label: "Facebook",
-      path: "/about",
-    },
-    {
-      label: "Instagram",
-      path: "/contact",
-    },
-  ];
   return (
     <div className="bg-[#13161C] py-[64px] font-Poppins px-6 md:px-10 xl:px-0">
       <Container>

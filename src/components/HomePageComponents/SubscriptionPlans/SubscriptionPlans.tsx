@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../../Shared/Container/Container";
 import PlanCard from "./PlanCard";
 import { ICONS } from "../../../assets";
+import { dailyData, deliveryInfo, monthlyData, weeklyData } from "./subscription.mockData";
 
 const SubscriptionPlans = () => {
   const [isDeliveryInfoOpen, setIsDeliveryInfoOpen] = useState(false);
   const [isCollectionInfoOpen, setIsCollectionInfoOpen] = useState(false);
   const [isDeliverySelected, setIsDeliverySelected] = useState(false);
   const [planMode, setPlanMode] = useState("Daily");
-  const planModeButtons = ["Daily", "Weekly", "Monthly"];
+  const planModeButtons = ["Daily", "Weekly", "Monthly (4 weeks)"];
   const dropDownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -25,94 +26,7 @@ const SubscriptionPlans = () => {
     return () => document.removeEventListener("mousedown", close);
   }, []);
 
-  const weeklyData = [
-    {
-      name: "Veg Meal",
-      foodCategory: "Veg",
-      madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
-      discountedPrice: 20,
-      priceBefore: 36,
-      plan: "Weekly",
-    },
-    {
-      name: "Veg Meal",
-      foodCategory: "Meat",
-      madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
-      discountedPrice: 20,
-      priceBefore: 36,
-      plan: "Weekly",
-    },
-  ];
-
-  const monthlyData = [
-    {
-      name: "Veg Meal",
-      foodCategory: "Veg",
-      madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
-      // discountedPrice: "€20",
-      // priceBefore: "€36",
-      plan: "Weekly",
-      meals : [
-        {
-          mealsQuantity : "20 Meals",
-          price : 260,
-          previousPrice : 400
-        },
-        {
-          mealsQuantity : "24 Meals",
-          price : 290,
-          previousPrice : 300
-        },
-      ],
-    },
-    {
-      name: "Veg Meal",
-      foodCategory: "Meat",
-      madeOf: ["Monday To Saturday", "2 Rice", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
-      // discountedPrice: "€20",
-      // priceBefore: "€36",
-      plan: "Monthly",
-      meals : [
-        {
-          mealsQuantity : "20 Meals",
-          price : 290,
-          previousPrice : 450
-        },
-        {
-          mealsQuantity : "24 Meals",
-          price : 325,
-          previousPrice : 380
-        },
-      ],
-    },
-  ];
-
-  const dailyData = [
-    {
-      name: "Veg Meal",
-      foodCategory: "Veg",
-      madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
-      discountedPrice: 20,
-      priceBefore: 36,
-      plan: "Daily",
-    },
-    {
-      name: "Veg Meal",
-      foodCategory: "Veg",
-      madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
-      discountedPrice: 20,
-      priceBefore: 36,
-      plan: "Daily",
-    },
-  ];
-
-  const deliveryInfo = [
-    "Dublin City University",
-    "Dublin Business School",
-    "Griffith College Dublin",
-    "University College Dublin",
-    "Maynooth University"
-  ];
+ 
 
   return (
     <Container>
@@ -124,7 +38,7 @@ const SubscriptionPlans = () => {
         <div className="flex items-center justify-center xl:justify-end">
           <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-[159px]">
             {/* Tab buttons */}
-            <div className="bg-[#E9EBED] rounded-[10px] p-1 flex items-center gap-4 w-fit mx-auto">
+            <div className="bg-[#E9EBED] rounded-[10px] p-1 flex items-center gap-3 md:gap-4 w-fit mx-auto">
               {planModeButtons.map((mode, index) => (
                 <button
                   onClick={() => setPlanMode(mode)}
@@ -133,7 +47,7 @@ const SubscriptionPlans = () => {
                     planMode === mode
                       ? "bg-white text-[#424B54]"
                       : "text-[#6E7883]"
-                  } font-medium leading-5 tracking-tighter px-6 py-2 rounded-lg`}
+                  } font-medium leading-5 tracking-tighter px-3 md:px-6 py-2 rounded-lg`}
                 >
                   {mode}
                 </button>
@@ -143,15 +57,15 @@ const SubscriptionPlans = () => {
             <div className="flex items-center gap-3 relative">
               <button
                 onClick={() => setIsDeliveryInfoOpen(!isDeliveryInfoOpen)}
-                className={`${!isDeliverySelected? "text-[#424B54]" : "text-[#8D9095]"} font-Poppins font-medium leading-5 flex items-center gap-1`}
+                className={`${!isDeliverySelected? "text-[#DE3C4B]" : "text-[#8D9095]"} font-Poppins font-medium leading-5 flex items-center gap-1`}
               >
                 Delivery
-                <img src={ICONS.infoIcon} alt="" className="size-4" />
+                <img src={!isDeliverySelected ? ICONS.infoIconRed : ICONS.infoIconGray} alt="" className="size-4" />
               </button>
               {/* Dropdown for delivery */}
               <div
                 ref={dropDownRef}
-                className={`absolute p-5 top-12 right-20 w-[392px] rounded-2xl bg-white border border-[#E6E6E6] transition-opacity duration-300 ${
+                className={`absolute p-5 top-12 -right-6 md:right-20 w-[340px] md:w-[392px] rounded-2xl bg-white border border-[#E6E6E6] transition-opacity duration-300 ${
                   isDeliveryInfoOpen
                     ? "opacity-100 visible duration-500"
                     : "opacity-0 invisible duration-150"
@@ -185,7 +99,7 @@ const SubscriptionPlans = () => {
               {/* Toggle button */}
               <div
                 className={`${
-                  isDeliverySelected ? " bg-[#DE3C4B]" : "bg-[#E9EBED]"
+                  isDeliverySelected ? " bg-[#d2d2d3]" : "bg-[#E9EBED]"
                 } w-[57px] h-[30px] px-[0.150rem] py-[0.160rem] cursor-pointer border transition-colors duration-500 border-[#e5eaf2]  rounded-full relative`}
                 onClick={() => setIsDeliverySelected(!isDeliverySelected)}
               >
@@ -200,16 +114,16 @@ const SubscriptionPlans = () => {
               {/* Button to see collection list */}
               <button
                 onClick={() => setIsCollectionInfoOpen(!isCollectionInfoOpen)}
-                className={`${isDeliverySelected? "text-[#424B54]" : "text-[#8D9095]"} font-Poppins font-medium leading-5 flex items-center gap-1`}
+                className={`${isDeliverySelected? "text-[#DE3C4B]" : "text-[#8D9095]"} font-Poppins font-medium leading-5 flex items-center gap-1`}
               >
                 Collection
-                <img src={ICONS.infoIcon} alt="" className="size-4" />
+                <img src={isDeliverySelected ? ICONS.infoIconRed : ICONS.infoIconGray} alt="" className="size-4" />
               </button>
 
               {/* Dropdown for collection */}
               <div
                 ref={dropDownRef}
-                className={`absolute p-5 top-12 right-0 w-[392px] rounded-2xl bg-white border border-[#E6E6E6] transition-opacity duration-300 ${
+                className={`absolute p-5 top-12 -right-6 md:right-0 w-[340px] md:w-[392px] rounded-2xl bg-white border border-[#E6E6E6] transition-opacity duration-300 ${
                   isCollectionInfoOpen
                     ? "opacity-100 visible duration-500"
                     : "opacity-0 invisible duration-150"
@@ -251,7 +165,6 @@ const SubscriptionPlans = () => {
             : monthlyData.map((data) => <PlanCard data={data} isDeliverySelected={isDeliverySelected} />)}
         </div>
 
-        <p>**Delivery everyday (Except Sunday)</p>
 
         {/* Plan cards */}
       </div>
