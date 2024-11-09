@@ -25,7 +25,7 @@ export const monthlyData = [
     {
         name: "Veg Meal",
         foodCategory: "Veg",
-        madeOf: ["1 Daal", "2 Rice", "4 Tawa Chapathi", "1 Seasonal Veg"],
+        madeOf: ["Daal (1 bowl)", "Rice (1 bowl)", "4 Tawa Chapathi", "1 Seasonal Veg"],
         plan: "Weekly",
         meals: [
             {
@@ -47,7 +47,7 @@ export const monthlyData = [
     {
         name: "Meat Meal",
         foodCategory: "Meat",
-        madeOf: ["4 Tawa Chapathi", "1 Chicken or 1 Lamb", "1 Rice", "Monday To Saturday(Pick any 1 day off)"],
+        madeOf: ["Rice (1 bowl)", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
         plan: "Monthly",
         meals: [
             {
