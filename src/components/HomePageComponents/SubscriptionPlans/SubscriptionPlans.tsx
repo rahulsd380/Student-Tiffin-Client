@@ -31,9 +31,9 @@ const SubscriptionPlans = () => {
   return (
     <Container>
       <div className="flex flex-col gap-12 py-[96px] md:py-[128px] px-6 md:px-10 xl:px-0">
-        <h1 className="text-[#DE3C4B] font-Rajdhani text-[46px] md:text-[96px] font-bold leading-[64px] md:leading-[110px] uppercase text-center">
-          Subscription Plans
-        </h1>
+        <h1 className="text-[#DE3C4B] font-Rajdhani text-[56px] md:text-[96px] font-bold leading-[64px] md:leading-[110px] uppercase text-center">
+        Subscription Plans
+          </h1>
 
         <div className="flex items-center justify-center xl:justify-end">
           <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-[159px]">

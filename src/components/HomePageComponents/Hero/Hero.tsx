@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { IMAGES } from "../../../assets";
 import Container from "../../Shared/Container/Container";
+import Modal from "../../Shared/Modal/Modal";
+import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
 
 const Hero = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="bg-[#F4F8FA]">
       <Container>
@@ -16,7 +20,7 @@ const Hero = () => {
               every craving.
             </p>
 
-            <button className="px-8 py-4 text-white bg-primary-gradient shadow-custom-shadow border border-white-opacity-25 rounded-2xl text-xl leading-5 font-semibold tracking-tighter mt-6">Get Your Tiffin</button>
+            <button onClick={() => setOpenModal(true)} className="px-8 py-4 text-white bg-primary-gradient shadow-custom-shadow border border-white-opacity-25 rounded-2xl text-xl leading-5 font-semibold tracking-tighter mt-6">Get Your Tiffin</button>
           </div>
 
           <img
@@ -25,6 +29,15 @@ const Hero = () => {
             className="w-full max-w-[350px] md:max-w-[448px] max-h-[370px] mdLmax-h-[474px]"
           />
         </div>
+
+        <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        classNames={"w-full max-w-[688px] h-[578px] overflow-y-auto p-4 md:p-8"}
+      >
+        {/* Form */}
+        <ContactUsForm/>
+      </Modal>
       </Container>
     </div>
   );

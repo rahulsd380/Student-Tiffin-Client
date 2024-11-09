@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { ICONS } from "../../../assets";
 import Badge from "../../Shared/Badge/Badge";
+import Modal from "../../Shared/Modal/Modal";
+import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
 
 const PlanCard = ({
   data,
@@ -10,6 +12,7 @@ const PlanCard = ({
   data: any;
   isDeliverySelected: boolean;
 }) => {
+  const [openModal, setOpenModal] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState("24 Meals");
 
   // Find the selected meal's pricing details if meals exist
@@ -142,6 +145,7 @@ const PlanCard = ({
         </div>
 
         <button
+        onClick={() => setOpenModal(true)}
           className={`${
             data.foodCategory === "Meat" ? "bg-[#DE3C4B]" : "bg-[#21CC00]"
           } p-4 size-[56px] rounded-full flex items-center justify-center`}
@@ -149,6 +153,15 @@ const PlanCard = ({
           <img src={ICONS.rightArrowWhite} alt="arrow" />
         </button>
       </div>
+
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        classNames={"w-full max-w-[688px] h-[578px] overflow-y-auto p-4 md:p-8"}
+      >
+        {/* Form */}
+        <ContactUsForm/>
+      </Modal>
     </div>
   );
 };
