@@ -33,7 +33,7 @@ const Hero = () => {
         <Modal
         openModal={openModal}
         setOpenModal={setOpenModal}
-        classNames={"w-full max-w-[688px] h-[578px] overflow-y-auto p-4 md:p-8"}
+        classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
       >
         {/* Form */}
         <ContactUsForm/>
