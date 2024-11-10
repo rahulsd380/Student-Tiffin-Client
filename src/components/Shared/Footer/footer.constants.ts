@@ -11,8 +11,8 @@ export const contactInfo = [
     },
     {
         icon: ICONS.phone,
-        info: "+918310234874",
-        href: "tel:+918310234874",
+        info: "+014414080",
+        href: "tel:+014414080",
     },
     {
         icon: ICONS.email,

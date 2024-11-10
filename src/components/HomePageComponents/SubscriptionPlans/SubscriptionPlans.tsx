@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../../Shared/Container/Container";
 import PlanCard from "./PlanCard";
 import { ICONS } from "../../../assets";
-import { dailyData, deliveryInfo, monthlyData, weeklyData } from "./subscription.mockData";
+import { collectionPoints, dailyData, deliveryPoints, monthlyData, weeklyData } from "./subscription.mockData";
 
 const SubscriptionPlans = () => {
   const [isDeliveryInfoOpen, setIsDeliveryInfoOpen] = useState(false);
@@ -72,10 +72,10 @@ const SubscriptionPlans = () => {
                 }`}
               >
                 <h1 className="text-[#293241] font-Poppins font-medium leading-5">
-                  Collection Points
+                  Delivery Points
                 </h1>
                 <div className="flex flex-col gap-[10px] mt-5">
-                  {deliveryInfo.map((info, idx) => (
+                  {deliveryPoints.map((info, idx) => (
                     <div
                       style={{
                         transform: `translateY(${
@@ -99,7 +99,7 @@ const SubscriptionPlans = () => {
               {/* Toggle button */}
               <div
                 className={`${
-                  isDeliverySelected ? " bg-[#d2d2d3]" : "bg-[#E9EBED]"
+                  isDeliverySelected ? " bg-[#DE3C4B]" : "bg-none"
                 } w-[57px] h-[30px] px-[0.150rem] py-[0.160rem] cursor-pointer border transition-colors duration-500 border-[#e5eaf2]  rounded-full relative`}
                 onClick={() => setIsDeliverySelected(!isDeliverySelected)}
               >
@@ -133,7 +133,7 @@ const SubscriptionPlans = () => {
                   Collection Points
                 </h1>
                 <div className="flex flex-col gap-[10px] mt-5">
-                  {deliveryInfo.map((info, idx) => (
+                  {collectionPoints.map((info, idx) => (
                     <div
                       style={{
                         transform: `translateY(${

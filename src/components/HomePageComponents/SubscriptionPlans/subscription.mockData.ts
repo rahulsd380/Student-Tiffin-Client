@@ -3,7 +3,7 @@ export const weeklyData = [
         name: "Veg Meal",
         foodCategory: "Veg",
         madeOf: ["Daal (1 bowl)", "Rice (1 bowl)", "4 Tawa Chapathi", "1 Seasonal Veg"],
-        deliveryPrice: 85,
+        deliveryPrice: 85,  
         collectionPrice: 75,
         priceBefore: 36,
         plan: "Weekly",
@@ -31,15 +31,15 @@ export const monthlyData = [
             {
                 mealsQuantity: "20 Meals",
                 availability: ["Monday to Saturday (pick any 1 day off)", "5 meals a week"],
-                deliveryPrice: 330,
-                collectionPrice: 290,
+                deliveryPrice: 290,
+                collectionPrice: 260,
                 previousPrice: 400
             },
             {
                 mealsQuantity: "24 Meals",
                 availability: ["Monday to Saturday", "6 meals a week"],
-                deliveryPrice: 250,
-                collectionPrice: 260,
+                deliveryPrice: 330,
+                collectionPrice: 290,
                 previousPrice: 300
             },
         ],
@@ -82,7 +82,7 @@ export const dailyData = [
     {
         name: "Meat Meal",
         foodCategory: "Meat",
-        madeOf: ["Rice (1 bowl)", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
+        madeOf: ["Daal (1 bowl)", "Rice (1 bowl)", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
         deliveryPrice: 17,
         collectionPrice: 17,
         priceBefore: 36,
@@ -91,7 +91,14 @@ export const dailyData = [
     },
 ];
 
-export const deliveryInfo = [
+export const deliveryPoints = [
+    "Dublin 1",
+    "Dublin 2",
+    "Dublin 7",
+    "Dublin 8"
+];
+
+export const collectionPoints = [
     "Dublin City University",
     "Dublin Business School",
     "Griffith College Dublin",
