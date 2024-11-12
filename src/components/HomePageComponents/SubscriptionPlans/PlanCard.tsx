@@ -24,10 +24,10 @@ const PlanCard = ({
   const getAdjustedPrice = () => {
     if (data.meals) {
       return isDeliverySelected
-        ? selectedMealData?.deliveryPrice
-        : selectedMealData?.collectionPrice;
+        ? selectedMealData?.collectionPrice
+        : selectedMealData?.deliveryPrice
     }
-    return isDeliverySelected ? data.deliveryPrice : data.collectionPrice;
+    return isDeliverySelected ? data.collectionPrice : data.deliveryPrice;
   };
 
   return (
