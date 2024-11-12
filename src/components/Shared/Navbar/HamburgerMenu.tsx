@@ -19,14 +19,13 @@ const HamburgerMenu = () => {
         setIsHamburgerOpen(false);
       }
     };
-  
+
     document.addEventListener("mousedown", handleOutsideClick);
-  
+
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [isHamburgerOpen]);
-  
 
   return (
     <div className="relative hamburgerMenu block md:hidden">
@@ -47,25 +46,26 @@ const HamburgerMenu = () => {
 
       {/* Side Menu */}
       <div
-       className={`py-6 fixed inset-y-0 right-0 z-50 bg-white w-[330px] overflow-y-auto h-screen transition-all duration-300 transform ${
-        isHamburgerOpen ? "translate-x-0" : "translate-x-full"
-      }`}
+        className={`py-6 fixed inset-y-0 right-0 z-50 bg-white w-[330px] overflow-y-auto h-screen transition-all duration-300 transform ${
+          isHamburgerOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div className="flex flex-col gap-[3px]">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                to={link.path}
-                className={`leading-5 bg-white px-5 py-4 ${
-                  location.pathname === link.path
-                    ? "text-[#DE3C4B] font-medium"
-                    : "text-[#424B54] font-normal"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            </div>
+          {navLinks.map((link, index) => (
+            <Link
+              onClick={toggleHamburgerMenu}
+              key={index}
+              to={link.path}
+              className={`leading-5 bg-white px-5 py-4 ${
+                location.pathname === link.path
+                  ? "text-[#DE3C4B] font-medium"
+                  : "text-[#424B54] font-normal"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
