@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
 
           {/* Subscribe to the newsletter. */}
-          <div className="w-full">
+          {/* <div className="w-full">
             <h1 className="text-white font-semibold text-2xl leading-8">
               Subscribe to the newsletter.
             </h1>
@@ -97,7 +97,7 @@ const Footer = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <hr className="border border-[#ffffff26] h-[1px] my-9" />
