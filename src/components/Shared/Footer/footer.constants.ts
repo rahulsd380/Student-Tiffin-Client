@@ -32,15 +32,15 @@ export const quickLinks = [
     },
     {
         label: "About",
-        path: "/about",
+        path: "/about-us",
     },
     {
         label: "Contact",
-        path: "/contact",
+        path: "/contact-us",
     },
     {
-        label: "Subscription",
-        path: "/subscription",
+        label: "Subscriptions",
+        path: "/subscriptions",
     },
 ];
 

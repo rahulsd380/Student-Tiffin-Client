@@ -5,6 +5,8 @@ import Home from "../pages/Home/Home";
 import Subscriptions from "../pages/Subscriptions/Subscriptions";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import Menu from "../pages/Menu/Menu";
+import MenuDetails from "../pages/MenuDetails/MenuDetails";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "/menu",
+        element: <Menu />,
+      },
+      {
+        path: "/menu-details",
+        element: <MenuDetails />,
       },
     ],
   },
