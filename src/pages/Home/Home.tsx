@@ -6,16 +6,18 @@ import SubscriptionPlans from "../../components/HomePageComponents/SubscriptionP
 import WhyChooseUS from "../../components/HomePageComponents/WhyChooseUS/WhyChooseUS";
 
 const Home = () => {
-    return (
-        <div>
-            <Hero/>
-            <Logos/>
-            <BringingComfort/>
-            {/* <Testimonials/> */}
-            <WhyChooseUS/>
-            <SubscriptionPlans/>
-        </div>
-    );
+  return (
+    <div>
+      <Hero />
+      <Logos />
+      <BringingComfort />
+      {/* <Testimonials/> */}
+      <WhyChooseUS />
+      <div className="py-[96px] md:py-[128px]">
+        <SubscriptionPlans isHeadingVisible={true} />
+      </div>
+    </div>
+  );
 };
 
 export default Home;

@@ -30,7 +30,7 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
 
   return (
     <Container>
-      <div className="flex flex-col gap-12 py-[96px] md:py-[128px] px-6 md:px-10 xl:px-0 w-full">
+      <div className="flex flex-col gap-12 px-6 md:px-10 xl:px-0 w-full">
        {
         isHeadingVisible &&
         <h1 className="text-[#DE3C4B] font-Rajdhani text-[56px] md:text-[96px] font-bold leading-[64px] md:leading-[110px] uppercase text-center">
