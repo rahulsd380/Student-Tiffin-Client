@@ -7,10 +7,10 @@ import ScrollToTop from "../../hooks/scrollToTop";
 const MainLayout = () => {
     return (
         <div>
-            <ScrollToTop />
             <Navbar/>
             <Outlet/>
             <Footer/>
+            <ScrollToTop />
         </div>
     );
 };

@@ -56,7 +56,7 @@ const Navbar = () => {
             {/* Dropdown */}
             <div
               ref={dropDownRef}
-              className={`absolute p-2 top-12 right-0 w-[277px] rounded-2xl bg-white border border-[#E6E6E6] transition-opacity duration-300 ${
+              className={`z-10 absolute p-2 top-12 right-0 w-[277px] rounded-2xl bg-white border border-[#E6E6E6] transition-opacity duration-300 ${
                 open
                   ? "opacity-100 visible duration-500"
                   : "opacity-0 invisible duration-150"
