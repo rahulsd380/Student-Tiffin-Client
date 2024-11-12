@@ -20,8 +20,8 @@ export const navLinks = [
       icon: ICONS.recentOrders,
     },
     {
-      label: "Subscription",
-      path: "/",
+      label: "Subscriptions",
+      path: "/subscriptions",
       icon: ICONS.subscription,
     },
   ];
