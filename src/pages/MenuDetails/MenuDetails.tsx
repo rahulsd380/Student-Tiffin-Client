@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ICONS, IMAGES } from "../../assets";
 import Badge from "../../components/Shared/Badge/Badge";
 import Container from "../../components/Shared/Container/Container";
@@ -33,11 +34,13 @@ const MenuDetails = () => {
           <div className="w-full flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
+                <Link to={"/menu"}>
                 <img
                   src={ICONS.leftArrow2}
                   alt="left-arrow"
                   className="size-8"
                 />
+                </Link>
                 <h1 className="text-[#293241] font-Poppins text-xl md:text-2xl font-semibold leading-6 md:leading-9">
                   Butter Chicken
                 </h1>
