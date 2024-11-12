@@ -4,7 +4,7 @@ import SubscriptionPlans from './../../components/HomePageComponents/Subscriptio
 
 const Subscriptions = () => {
     return (
-        <div className="space-y-[96px] xl:space=y=[128px] w-full">
+        <div className="w-full">
             <HeadingContainer title={"Subscription PLANS"}/>
             <SubscriptionPlans isHeadingVisible={false}/>
         </div>

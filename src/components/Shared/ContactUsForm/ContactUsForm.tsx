@@ -12,7 +12,11 @@ type FormValues = {
   message: string;
 };
 
-const ContactUsForm = () => {
+type TProps = {
+  classNames?:string;
+}
+
+const ContactUsForm:React.FC<TProps> = ({classNames}) => {
   const methods = useForm<FormValues>({
     defaultValues: {
       fullName: "",
@@ -57,7 +61,7 @@ const ContactUsForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <form ref={form} onSubmit={handleSubmit(sendEmail)} className="space-y-8">
+      <form ref={form} onSubmit={handleSubmit(sendEmail)} className={`space-y-8 ${classNames}`}>
         <Input
           label="Full Name"
           name="from_name"

@@ -5,7 +5,7 @@ export const navLinks = [
     { label: "Menu", path: "/menu" },
     { label: "About", path: "/about" },
     { label: "Subscriptions", path: "/subscriptions" },
-    { label: "Contact", path: "/contact" },
+    { label: "Contact", path: "/contact-us" },
   ];
 
   export const dropdownLinks = [
