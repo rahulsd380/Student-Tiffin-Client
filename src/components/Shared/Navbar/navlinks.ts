@@ -1,4 +1,3 @@
-import { ICONS } from "../../../assets";
 
 export const navLinks = [
     { label: "Home", path: "/" },
@@ -6,22 +5,4 @@ export const navLinks = [
     { label: "About", path: "/about-us" },
     { label: "Subscriptions", path: "/subscriptions" },
     { label: "Contact", path: "/contact-us" },
-  ];
-
-  export const dropdownLinks = [
-    {
-      label: "Profile",
-      path: "/",
-      icon: ICONS.user,
-    },
-    {
-      label: "Recent Orders",
-      path: "/",
-      icon: ICONS.recentOrders,
-    },
-    {
-      label: "Subscriptions",
-      path: "/subscriptions",
-      icon: ICONS.subscription,
-    },
   ];

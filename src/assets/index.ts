@@ -20,6 +20,7 @@ import infoIconGray from "../assets/icons/info-icon-gray.svg";
 import infoIconRed from "../assets/icons/info-icon-red.svg";
 import pointer from "../assets/icons/pointer.svg";
 import leftArrow2 from "../assets/icons/left-arrow2.svg";
+import orders from "../assets/icons/orders.svg";
 
 
 
@@ -57,6 +58,7 @@ export const ICONS = {
     infoIconRed,
     pointer,
     leftArrow2,
+    orders,
  
 };
 

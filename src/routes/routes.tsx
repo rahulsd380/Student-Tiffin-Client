@@ -7,6 +7,10 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Menu from "../pages/Menu/Menu";
 import MenuDetails from "../pages/MenuDetails/MenuDetails";
+import SettingLayout from "../layouts/SettingLayout/SettingLayout";
+import Profile from "../pages/Profile/Profile";
+import RecentOrders from "../pages/Settings/RecentOrders/RecentOrders";
+import SubscriptionPage from "../pages/Settings/SubscriptionPage/SubscriptionPage";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +41,25 @@ export const router = createBrowserRouter([
       {
         path: "/menu-details",
         element: <MenuDetails />,
+      },
+    ],
+  },
+  {
+    path: "/setting",
+    element: <SettingLayout />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "recent-orders",
+        element: <RecentOrders />,
+      },
+      {
+        path: "subscriptions",
+        element: <SubscriptionPage />,
       },
     ],
   },
