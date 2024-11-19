@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const SubscriptionsCard = ({ variant }: { variant: string }) => {
   return (
-    <div className="font-Poppins flex items-center justify-between bg-white px-6 py-5 border border-[#D4D7DB] rounded-xl">
+    <div className="font-Poppins flex flex-col md:flex-row gap-4 md:gap-0 items-start md:items-center justify-between bg-white px-6 py-5 border border-[#D4D7DB] rounded-xl">
       <div>
         <h1 className="text-[#424B54] text-lg font-medium leading-6">
           Vegetarian Meal (Monthly)

@@ -11,6 +11,7 @@ import SettingLayout from "../layouts/SettingLayout/SettingLayout";
 import Profile from "../pages/Profile/Profile";
 import RecentOrders from "../pages/Settings/RecentOrders/RecentOrders";
 import SubscriptionPage from "../pages/Settings/SubscriptionPage/SubscriptionPage";
+import Checkout from "../pages/Checkout/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "/menu-details",
         element: <MenuDetails />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },

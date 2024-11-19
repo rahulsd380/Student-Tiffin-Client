@@ -21,6 +21,7 @@ import infoIconRed from "../assets/icons/info-icon-red.svg";
 import pointer from "../assets/icons/pointer.svg";
 import leftArrow2 from "../assets/icons/left-arrow2.svg";
 import orders from "../assets/icons/orders.svg";
+import leftArrowWhite from "../assets/icons/leftArrowWhite.svg";
 
 
 
@@ -34,6 +35,7 @@ import userImg from "../assets/images/user-img.png";
 import menu1 from "../assets/images/menu-1.png";
 import menu2 from "../assets/images/menu-3.png";
 import menu3 from "../assets/images/menu-4.png";
+import paymentMethods from "../assets/images/payment-methods.png";
 
 
 
@@ -59,6 +61,7 @@ export const ICONS = {
     pointer,
     leftArrow2,
     orders,
+    leftArrowWhite,
  
 };
 
@@ -73,4 +76,5 @@ export const IMAGES = {
     menu1,
     menu2,
     menu3,
+    paymentMethods,
 }
