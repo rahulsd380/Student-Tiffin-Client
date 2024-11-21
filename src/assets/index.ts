@@ -22,6 +22,7 @@ import pointer from "../assets/icons/pointer.svg";
 import leftArrow2 from "../assets/icons/left-arrow2.svg";
 import orders from "../assets/icons/orders.svg";
 import leftArrowWhite from "../assets/icons/leftArrowWhite.svg";
+import arrowOutward from "../assets/icons/arrow_outward.svg";
 
 
 
@@ -39,9 +40,18 @@ import paymentMethods from "../assets/images/payment-methods.png";
 import studentTiffin from "../assets/images/student-tiffin.jpeg";
 
 // Hero images
-import dishImg1 from "../assets/images/dishImg1.jpeg";
-import dishImg2 from "../assets/images/dishImg2.jpeg";
-import dishImg3 from "../assets/images/dishImg3.jpeg";
+import heroImg1 from "../assets/images/heroImg1.png";
+import heroImg2 from "../assets/images/heroImg2.png";
+import heroImg3 from "../assets/images/heroImg3.png";
+
+// Menu images
+import chcikenCurry from "../assets/images/menu images/chicken-curry.png";
+import lambCurry from "../assets/images/menu images/lamb.png";
+import sesonalVeg from "../assets/images/menu images/sesonal-veg.png";
+import tawaRoti from "../assets/images/menu images/tawa-roti.png";
+import dal from "../assets/images/menu images/dal.png";
+import rice from "../assets/images/menu images/rice.png";
+import salad from "../assets/images/menu images/salad.png";
 
 
 
@@ -68,6 +78,7 @@ export const ICONS = {
     leftArrow2,
     orders,
     leftArrowWhite,
+    arrowOutward,
  
 };
 
@@ -84,7 +95,15 @@ export const IMAGES = {
     menu3,
     paymentMethods,
     studentTiffin,
-    dishImg1,
-    dishImg2,
-    dishImg3,
+    heroImg1,
+    heroImg2,
+    heroImg3,
+    chcikenCurry,
+    lambCurry,
+    sesonalVeg,
+    tawaRoti,
+    dal,
+    rice,
+    salad,
+
 }

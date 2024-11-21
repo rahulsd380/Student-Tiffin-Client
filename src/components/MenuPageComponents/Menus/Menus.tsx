@@ -6,28 +6,41 @@ import MenuCard from "../MenuCard/MenuCard";
 const Menus = () => {
     const menus = [
         {
-            img : IMAGES.menu1,
-            name:"Seasonal Veg"
+            img : IMAGES.tawaRoti,
+            name:"Tawa Roti",
+            menuType: "VEG"
         },
         {
-            img : IMAGES.menu2,
-            name:"Dal"
+            img : IMAGES.rice,
+            name:"Rice",
+            menuType: "VEG"
         },
         {
-            img : IMAGES.menu3,
-            name:"Rice"
+            img : IMAGES.dal,
+            name:"Dal",
+            menuType: "VEG"
         },
         {
-            img : IMAGES.menu3,
-            name:"Chicken"
+            img : IMAGES.sesonalVeg,
+            name:"Seasonal Veg",
+            menuType: "VEG"
+        },
+        
+        
+        {
+            img : IMAGES.salad,
+            name:"Salad",
+            menuType: "VEG"
         },
         {
-            img : IMAGES.menu2,
-            name:"Lamb"
+            img : IMAGES.chcikenCurry,
+            name:"Chicken Curry",
+            menuType: "MEAT"
         },
         {
-            img : IMAGES.menu2,
-            name:"Tawa Chapathi"
+            img : IMAGES.lambCurry,
+            name:"Lamb Curry",
+            menuType: "MEAT"
         },
     ]
     return (
