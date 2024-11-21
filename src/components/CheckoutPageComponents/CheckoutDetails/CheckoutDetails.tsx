@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ICONS } from "../../../assets";
 
-const CheckoutDetails = () => {
+const CheckoutDetails = ({heading}:{heading:string}) => {
   return (
     <div className="bg-[#293241] rounded-t-none md:rounded-t-xl p-6 font-Poppins flex flex-col gap-5">
       {/* Heading */}
@@ -13,7 +13,7 @@ const CheckoutDetails = () => {
           className="size-5"
         />
         </Link>
-        <h1 className="font-bold leading-5 text-white">Checkout</h1>
+        <h1 className="font-bold leading-5 text-white">{heading}</h1>
       </div>
 
       <hr className="border border-[#ffffff26] border-dashed"/>

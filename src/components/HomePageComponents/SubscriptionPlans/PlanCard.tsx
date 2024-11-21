@@ -139,7 +139,7 @@ const PlanCard = ({
             {data.plan === "Weekly"
               ? "per week"
               : data.plan === "Daily"
-              ? "per day"
+              ? "per meal"
               : "per month"}
           </p>
         </div>

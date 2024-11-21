@@ -11,15 +11,11 @@ const AboutUsHero = () => {
         <Container>
       <div className="px-5 md:px-10 xl:px-0">
         <h1 className="text-[#293241] text-[36px] md:text-[40px] xl:text-[64px] font-bold leading-[44px]  md:leading-[64px] xl:leading-[80px] -tracking-[1px] max-w-[350px] md:max-w-[752px] lg:max-w-full">
-          We Deliver Every Day Because Food & Hunger Don’t Have a Holiday.
+          We Deliver Every Day From Monday to Saturday.
         </h1>
 
         <p className="text-[#424B54] text-lg md:text-xl xl:text-2xl leading-6 md:leading-9 mt-5">
-          SAt Student Tiffin, we understand that cravings for authentic Indian
-          food can strike any day of the week. That's why we are committed to
-          delivering fresh, delicious meals to your table every day. Our menu
-          features a range of homestyle dishes, inspired by traditional recipes
-          passed down through generations.
+        At Student Tiffin, we understand that cravings for authentic Indian food can strike any day of the week. That's why we are committed to delivering fresh, delicious meals to your table every day from Monday to Saturday. Our menu features a range of homestyle dishes, inspired by traditional recipes passed down through generations.
           <br />
           <br />
           We believe in using only quality ingredients to ensure every bite is

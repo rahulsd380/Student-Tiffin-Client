@@ -12,6 +12,7 @@ import Profile from "../pages/Profile/Profile";
 import RecentOrders from "../pages/Settings/RecentOrders/RecentOrders";
 import SubscriptionPage from "../pages/Settings/SubscriptionPage/SubscriptionPage";
 import Checkout from "../pages/Checkout/Checkout";
+import OrderSummary from "../pages/OrderSummary/OrderSummary";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/order-summary",
+        element: <OrderSummary />,
       },
     ],
   },

@@ -12,8 +12,8 @@ const Profile = () => {
   });
   const {
     handleSubmit,
-    register,
-    formState: { errors },
+    // register,
+    // formState: { errors },
   } = methods;
 
   const handleUpdateProfile = () => {

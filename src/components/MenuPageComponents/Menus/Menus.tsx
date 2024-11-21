@@ -7,35 +7,27 @@ const Menus = () => {
     const menus = [
         {
             img : IMAGES.menu1,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
+            name:"Seasonal Veg"
         },
         {
             img : IMAGES.menu2,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
+            name:"Dal"
         },
         {
             img : IMAGES.menu3,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
+            name:"Rice"
         },
         {
             img : IMAGES.menu3,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
+            name:"Chicken"
         },
         {
             img : IMAGES.menu2,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
-        },
-        {
-            img : IMAGES.menu1,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
-        },
-        {
-            img : IMAGES.menu1,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
+            name:"Lamb"
         },
         {
             img : IMAGES.menu2,
-            name:"Paneer Butter Masala, Dal Fry, Roti, Rice, Salad."
+            name:"Tawa Chapathi"
         },
     ]
     return (

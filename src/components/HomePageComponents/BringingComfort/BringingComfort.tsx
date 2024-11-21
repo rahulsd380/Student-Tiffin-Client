@@ -21,8 +21,7 @@ const BringingComfort = () => {
           <p className="text-[#424B54] text-lg md:text-2xl leading-6 md:leading-9 max-w-[310px] md:max-w-[688px] xl:max-w-[716px] mt-3">
             At Student Tiffin, we deliver authentic Indian meals made from
             family recipes. Enjoy healthy, delicious food without the hassle of
-            cooking. We deliver because food and hunger don’t take a holiday 😉
-            .
+            cooking. We deliver everyday from Monday to Saturday.
           </p>
 
           <button

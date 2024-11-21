@@ -36,6 +36,12 @@ import menu1 from "../assets/images/menu-1.png";
 import menu2 from "../assets/images/menu-3.png";
 import menu3 from "../assets/images/menu-4.png";
 import paymentMethods from "../assets/images/payment-methods.png";
+import studentTiffin from "../assets/images/student-tiffin.jpeg";
+
+// Hero images
+import dishImg1 from "../assets/images/dishImg1.jpeg";
+import dishImg2 from "../assets/images/dishImg2.jpeg";
+import dishImg3 from "../assets/images/dishImg3.jpeg";
 
 
 
@@ -77,4 +83,8 @@ export const IMAGES = {
     menu2,
     menu3,
     paymentMethods,
+    studentTiffin,
+    dishImg1,
+    dishImg2,
+    dishImg3,
 }

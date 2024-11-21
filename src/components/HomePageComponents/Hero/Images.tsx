@@ -5,7 +5,7 @@ const Images = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
 
   // The slider images array
-  const sliderImages = [IMAGES.heroImg, IMAGES.tiffinImg1, IMAGES.tiffinImg2];
+  const sliderImages = [IMAGES.dishImg1, IMAGES.dishImg2, IMAGES.dishImg3];
 
   const nextSlider = useCallback(() => {
     setCurrentSlider((currentSlider) =>

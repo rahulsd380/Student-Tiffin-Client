@@ -13,7 +13,7 @@ const WhyChooseUS = () => {
     },
     {
       img: IMAGES.tiffinImg3,
-      description: "Diverse menu options to satisfy every craving.",
+      description: "Simple menu options to satisfy every craving.",
     },
   ];
   return (
@@ -25,14 +25,18 @@ const WhyChooseUS = () => {
           </h1>
 
           <div className="flex flex-col xl:flex-row items-center justify-center gap-[64px]">
-            {
-                items.map((item, index) => 
-                    <div key={index} className="flex flex-col items-center gap-12">
-            <img src={item.img} alt="" className="max-w-[348px] max-h-[227px]" />
-            <p className="text-white text-2xl md:text-[28px] font-Poppins leading-9 text-center max-w-[352px] md:max-w-full xl:max-w-[352px] mx-auto">{item.description}</p>
-          </div>
-                )
-            }
+            {items.map((item, index) => (
+              <div key={index} className="flex flex-col items-center gap-12">
+                <img
+                  src={item.img}
+                  alt=""
+                  className="max-w-[348px] max-h-[227px]"
+                />
+                <p className="text-white text-2xl md:text-[28px] font-Poppins leading-9 text-center max-w-[352px] md:max-w-full xl:max-w-[352px] mx-auto">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </Container>

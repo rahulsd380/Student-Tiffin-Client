@@ -13,34 +13,38 @@ const Footer = () => {
               Let’s Get Together
             </h1>
             <div className="flex flex-col gap-4 mt-7">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center gap-4">
-                  <div className="p-2 bg-[#ffffff26] rounded-full flex items-center justify-center size-10">
-                    <img src={info.icon} alt="" className="size-6" />
-                  </div>
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      className="text-[#ffffffcc] leading-6 w-[312px] hover:underline"
-                      // Only add target="_blank" for non-phone links
-                      target={
-                        info.href.startsWith("tel:") ? undefined : "_blank"
-                      }
-                      rel={
-                        info.href.startsWith("tel:")
-                          ? undefined
-                          : "noopener noreferrer"
-                      }
-                    >
-                      {info.info}
-                    </a>
-                  ) : (
-                    <span className="text-[#ffffffcc] leading-6 w-[312px]">
-                      {info.info}
-                    </span>
-                  )}
-                </div>
-              ))}
+            {contactInfo.map((info, index) => (
+  <div key={index} className="flex items-center gap-4">
+    <div className="p-2 bg-[#ffffff26] rounded-full flex items-center justify-center size-10">
+      <img src={info.icon} alt="" className="size-6" />
+    </div>
+    <div className="text-[#ffffffcc] leading-6 w-[312px] flex flex-col">
+      {info.href ? (
+        <a
+          href={info.href}
+          className="hover:underline"
+          target={info.href.startsWith("tel:") ? undefined : "_blank"}
+          rel={info.href.startsWith("tel:") ? undefined : "noopener noreferrer"}
+        >
+          {info.info}
+        </a>
+      ) : (
+        <span>{info.info}</span>
+      )}
+      {info.info2 && info.href2 && (
+        <a
+          href={info.href2}
+          className="hover:underline"
+          target={info.href2.startsWith("tel:") ? undefined : "_blank"}
+          rel={info.href2.startsWith("tel:") ? undefined : "noopener noreferrer"}
+        >
+          {info.info2}
+        </a>
+      )}
+    </div>
+  </div>
+))}
+
             </div>
           </div>
 

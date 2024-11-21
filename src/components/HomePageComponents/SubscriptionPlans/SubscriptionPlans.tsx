@@ -133,7 +133,7 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
                 }`}
               >
                 <h1 className="text-[#293241] font-Poppins font-medium leading-5">
-                  Collection Points
+                Drop Points
                 </h1>
                 <div className="flex flex-col gap-[10px] mt-5">
                   {collectionPoints.map((info, idx) => (
