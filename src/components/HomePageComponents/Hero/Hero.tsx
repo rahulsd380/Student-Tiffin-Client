@@ -8,8 +8,7 @@ import Images from "./Images";
 const Hero = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
-    <div className="bg-white">
-      {/* bg-[#F4F8FA] */}
+    <div className="bg-[#F4F8FA]">
       <Container>
         <div className="font-Poppins flex flex-col xl:flex-row items-center md:items-start xl:items-center gap-[64px] xl:gap-5 pt-[42px] md:pt-[52px] xl:pt-[150px] pb-[64px] md:pb-[96px] xl:pb-[200px] px-5 md:px-10 xl:px-0">
           <div>

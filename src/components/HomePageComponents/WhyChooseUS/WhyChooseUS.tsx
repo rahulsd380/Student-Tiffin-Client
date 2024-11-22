@@ -4,7 +4,7 @@ import Container from "../../Shared/Container/Container";
 const WhyChooseUS = () => {
   const items = [
     {
-      img: IMAGES.tiffinImg1,
+      img: IMAGES.heroImg1,
       description: "Authentic Indian flavors delivered fresh.",
     },
     {
@@ -12,7 +12,7 @@ const WhyChooseUS = () => {
       description: "Healthy meals made from quality ingredients.",
     },
     {
-      img: IMAGES.tiffinImg3,
+      img: IMAGES.heroImg2,
       description: "Simple menu options to satisfy every craving.",
     },
   ];

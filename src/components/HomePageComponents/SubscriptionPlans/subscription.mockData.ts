@@ -92,16 +92,18 @@ export const dailyData = [
 ];
 
 export const deliveryPoints = [
-    "Dublin 1",
-    "Dublin 2",
-    "Dublin 7",
-    "Dublin 8"
-];
-
-export const collectionPoints = [
     "Dublin City University",
     "Dublin Business School",
     "Griffith College Dublin",
     "University College Dublin",
-    "Maynooth University"
+    "Maynooth University",
+    "Dublin 1",
+    "Dublin 2",
+    "Dublin 7",
+    "Dublin 8",
+];
+
+export const collectionPoints = [
+    
+    "Spade Enterprise Centre, North King Street, Smithfield, Dublin 7"
 ];
