@@ -7,7 +7,7 @@ export const contactInfo = [
     },
     {
       icon: ICONS.clock,
-      info: "Everyday: 11 AM - 2.30 PM",
+      info: "Monday- Saturday: 11 AM - 2.30 PM",
     },
     {
       icon: ICONS.phone,
