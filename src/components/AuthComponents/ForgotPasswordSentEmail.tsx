@@ -2,8 +2,8 @@ import { ICONS } from "../../assets";
 import { useModal } from "../../context/ModalContext";
 
 const ForgotPasswordSentEmail = () => {
-    const { setOpenModal, setModalType } = useModal();
-  const handleOpenChangePassword= () => {
+  const { setOpenModal, setModalType } = useModal();
+  const handleOpenChangePassword = () => {
     setModalType("changePassword");
     setOpenModal(true);
   };
@@ -13,7 +13,10 @@ const ForgotPasswordSentEmail = () => {
         <p className="text-[#4A4A5A] font-Poppins text-lg text-center">
           Confirmation Email Has been sent to
         </p>
-        <button onClick={handleOpenChangePassword} className="flex items-center gap-1 font-medium underline">
+        <button
+          onClick={handleOpenChangePassword}
+          className="flex items-center gap-1 font-medium underline"
+        >
           testmail@site.com{" "}
           <img
             src={ICONS.pen}

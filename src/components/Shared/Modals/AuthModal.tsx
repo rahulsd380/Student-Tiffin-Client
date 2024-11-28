@@ -2,9 +2,9 @@ import { ICONS } from "../../../assets";
 import { useModal } from "../../../context/ModalContext";
 import ChangePassword from "../../AuthComponents/ChangePassword";
 import ForgotPassword from "../../AuthComponents/ForgotPassword";
-import ForgotPasswordSentEmail from "../../AuthComponents/forgotPasswordSentEmail";
 import Login from "../../AuthComponents/Login";
 import Signup from "../../AuthComponents/Signup";
+import ForgotPasswordSentEmail from './../../AuthComponents/ForgotPasswordSentEmail';
 
 const AuthModal = () => {
   const { openModal, setOpenModal, modalType } = useModal();
