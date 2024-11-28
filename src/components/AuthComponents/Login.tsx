@@ -1,4 +1,5 @@
 
+import { useModal } from "../../context/ModalContext";
 import Input2 from "../Shared/Input/Input2";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -8,6 +9,11 @@ interface FormValues {
 }
 
 const Login = () => {
+  const { setOpenModal, setModalType } = useModal();
+  const handleOpenForgotPasswordModal = () => {
+    setModalType("forgotPassword");
+    setOpenModal(true);
+  };
   const {
     register,
     handleSubmit,
@@ -39,9 +45,9 @@ const Login = () => {
           />
 
           <div className="flex justify-end mt-[6px]">
-            <button className="text-[#DE3C4B] font-Poppins text-sm font-medium">
+            <div onClick={handleOpenForgotPasswordModal} className="text-[#DE3C4B] font-Poppins text-sm font-medium cursor-pointer">
               Forgot Password?
-            </button>
+            </div>
           </div>
         </div>
 

@@ -58,10 +58,10 @@ export const followUsInfo = [
     // },
     {
         label: "Facebook",
-        path: "/about",
+        path: "https://www.facebook.com/profile.php?id=61569386037973",
     },
     {
         label: "Instagram",
-        path: "/contact",
+        path: "https://www.instagram.com/students_tiffin_dublin7/?igsh=MWlndmlyaGk1Z2lpdg%3D%3D",
     },
 ];

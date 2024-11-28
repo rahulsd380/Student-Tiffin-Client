@@ -84,13 +84,14 @@ const Footer = () => {
             </h1>
             <div className="flex flex-col gap-4 mt-7">
               {followUsInfo.map((info, index) => (
-                <Link
-                  to={info.path}
+                <a
+                target="_blank"
+                  href={info.path}
                   key={index}
                   className="text-[#ffffffcc] leading-6 hover:underline w-fit"
                 >
                   {info.label}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
