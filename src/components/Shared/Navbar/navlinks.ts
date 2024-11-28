@@ -1,4 +1,3 @@
-
 export const navLinks = [
     { label: "Home", path: "/" },
     { label: "Menu", path: "/menu" },

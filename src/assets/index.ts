@@ -23,6 +23,7 @@ import leftArrow2 from "../assets/icons/left-arrow2.svg";
 import orders from "../assets/icons/orders.svg";
 import leftArrowWhite from "../assets/icons/leftArrowWhite.svg";
 import arrowOutward from "../assets/icons/arrow_outward.svg";
+import close from "../assets/icons/close-icon.svg";
 
 
 
@@ -79,7 +80,7 @@ export const ICONS = {
     orders,
     leftArrowWhite,
     arrowOutward,
- 
+    close,
 };
 
 

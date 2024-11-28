@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { ICONS } from "../../../assets";
 import Badge from "../../Shared/Badge/Badge";
-import Modal from "../../Shared/Modal/Modal";
 import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
+import Modal1 from "../../Shared/Modals/Modal1";
 
 const PlanCard = ({
   data,
@@ -154,14 +154,14 @@ const PlanCard = ({
         </button>
       </div>
 
-      <Modal
+      <Modal1
         openModal={openModal}
         setOpenModal={setOpenModal}
         classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
       >
         {/* Form */}
         <ContactUsForm/>
-      </Modal>
+      </Modal1>
     </div>
   );
 };

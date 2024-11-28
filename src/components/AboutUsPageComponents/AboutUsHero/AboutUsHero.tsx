@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
-import Modal from "../../Shared/Modal/Modal";
 import Container from "../../Shared/Container/Container";
 import Logos from "../../HomePageComponents/Hero/Logos";
+import Modal1 from "../../Shared/Modals/Modal1";
 
 const AboutUsHero = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -35,14 +35,14 @@ const AboutUsHero = () => {
       </div>
 
     
-      <Modal
+      <Modal1
         openModal={openModal}
         setOpenModal={setOpenModal}
         classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
       >
         {/* Form */}
         <ContactUsForm />
-      </Modal>
+      </Modal1>
     </Container>
     <div className="mt-[64px] md:mt-[96px] xl:mt-[128px]">
       <Logos/>

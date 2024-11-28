@@ -4,16 +4,27 @@ import { navLinks } from "./navlinks";
 import HamburgerMenu from "./HamburgerMenu";
 import Dropdown from "./Dropdown";
 import { IMAGES } from "../../../assets";
+import { useState } from "react";
+import AuthModal from "../Modals/AuthModal";
+import Login from "../../AuthComponents/Login";
+import Signup from "../../AuthComponents/Signup";
 
 const Navbar = () => {
   const location = useLocation();
+  const user = false;
+  const [openSignupModal, setOpenSignupModal] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
 
   return (
     <div className="bg-white px-5 md:px-10 xl:px-0 py-4 border-b border-[#E6E6E6]">
       <Container>
         <div className="font-Poppins flex items-center justify-between">
           <Link to={"/"}>
-          <img src={IMAGES.studentTiffin} alt="student-tiffin" className="w-24" />
+            <img
+              src={IMAGES.studentTiffin}
+              alt="student-tiffin"
+              className="w-24"
+            />
           </Link>
 
           {/* Navlinks */}
@@ -33,11 +44,46 @@ const Navbar = () => {
                 </a>
               ))}
             </div>
-            <Dropdown />
+            {user ? (
+              <Dropdown />
+            ) : (
+              <div className="flex items-center gap-5">
+                <button
+                  onClick={() => setOpenLoginModal(true)}
+                  className="px-6 py-3 rounded-xl border border-[#DE3C4B] text-[#DE3C4B] font-semibold"
+                >
+                  Sign In
+                </button>
+
+                <button
+                  onClick={() => setOpenSignupModal(true)}
+                  className="px-6 py-3 text-white bg-primary-gradient rounded-xl font-semibold border border-[#DE3C4B]"
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
 
             <HamburgerMenu />
           </div>
         </div>
+          
+          {/* For login */}
+        <AuthModal
+          openModal={openLoginModal}
+          setOpenModal={setOpenLoginModal}
+          heading="Login to Student Tiffin"
+        >
+          <Login />
+        </AuthModal>
+        {/* For signup */}
+        <AuthModal
+          openModal={openSignupModal}
+          setOpenModal={setOpenSignupModal}
+          heading="Signup to Student Tiffin"
+        >
+          <Signup />
+        </AuthModal>
       </Container>
     </div>
   );

@@ -1,13 +1,13 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
-export type ModalProps = {
+export type Modal1Props = {
     children: ReactNode;
     openModal: boolean;
     setOpenModal: Dispatch<SetStateAction<boolean>>
     classNames?: string;
 }
 
-const Modal : React.FC<ModalProps> = ({children,openModal, setOpenModal, classNames}) => {
+const Modal1 : React.FC<Modal1Props> = ({children,openModal, setOpenModal, classNames}) => {
     return (
         <div className="mx-auto w-fit">
             <div onClick={() => setOpenModal(false)} className={`fixed z-[100] w-screen ${openModal ? 'visible opacity-100' : 'invisible opacity-0'} inset-0 grid place-items-center bg-gray-800/50 duration-100`}>
@@ -20,4 +20,4 @@ const Modal : React.FC<ModalProps> = ({children,openModal, setOpenModal, classNa
     );
 };
 
-export default Modal;
+export default Modal1;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 // import { IMAGES } from "../../../assets";
 import Container from "../../Shared/Container/Container";
-import Modal from "../../Shared/Modal/Modal";
 import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
 import Images from "./Images";
+import Modal1 from "../../Shared/Modals/Modal1";
 
 const Hero = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -37,14 +37,14 @@ const Hero = () => {
           <Images />
         </div>
 
-        <Modal
+        <Modal1
           openModal={openModal}
           setOpenModal={setOpenModal}
           classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
         >
           {/* Form */}
           <ContactUsForm />
-        </Modal>
+        </Modal1>
       </Container>
     </div>
   );

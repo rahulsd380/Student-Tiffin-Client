@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Container from "../../Shared/Container/Container";
-import Modal from "../../Shared/Modal/Modal";
 import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
+import Modal1 from "../../Shared/Modals/Modal1";
 
 
 const BringingComfort = () => {
@@ -33,14 +33,14 @@ const BringingComfort = () => {
         </div>
       </Container>
 
-      <Modal
+      <Modal1
         openModal={openModal}
         setOpenModal={setOpenModal}
         classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
       >
         {/* Form */}
         <ContactUsForm/>
-      </Modal>
+      </Modal1>
     </div>
   );
 };
