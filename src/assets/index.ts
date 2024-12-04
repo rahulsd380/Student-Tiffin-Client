@@ -24,7 +24,7 @@ import orders from "../assets/icons/orders.svg";
 import leftArrowWhite from "../assets/icons/leftArrowWhite.svg";
 import arrowOutward from "../assets/icons/arrow_outward.svg";
 import close from "../assets/icons/close-icon.svg";
-import pen from "../assets/icons/Pen.svg";
+import pen from "../assets/icons/pen.svg";
 
 
 
