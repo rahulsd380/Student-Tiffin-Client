@@ -3,7 +3,7 @@ export const weeklyData = [
         name: "Veg Meal",
         foodCategory: "Veg",
         madeOf: ["Daal (1 bowl)", "Rice (1 bowl)", "4 Tawa Chapathi", "1 Seasonal Veg"],
-        deliveryPrice: 85,  
+        deliveryPrice: 85,
         collectionPrice: 75,
         priceBefore: 36,
         plan: "Weekly",
@@ -12,7 +12,7 @@ export const weeklyData = [
     {
         name: "Meat Meal",
         foodCategory: "Meat",
-        madeOf: ["Rice (1 bowl)", "4 Tawa Chapathi", "1 Seasonal Veg"],
+        madeOf: ["Daal (1 bowl)","Rice (1 bowl)", "4 Tawa Chapathi", "1 Seasonal Veg"],
         deliveryPrice: 90,
         collectionPrice: 80,
         priceBefore: 36,
@@ -47,7 +47,7 @@ export const monthlyData = [
     {
         name: "Meat Meal",
         foodCategory: "Meat",
-        madeOf: ["Rice (1 bowl)", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
+        madeOf: ["Daal (1 bowl)", "Rice (1 bowl)", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
         plan: "Monthly",
         meals: [
             {
@@ -104,6 +104,5 @@ export const deliveryPoints = [
 ];
 
 export const collectionPoints = [
-    
     "Spade Enterprise Centre, North King Street, Smithfield, Dublin 7"
 ];

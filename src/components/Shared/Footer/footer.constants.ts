@@ -11,14 +11,14 @@ export const contactInfo = [
     },
     {
       icon: ICONS.phone,
-      info: "014414080",
-      href: "tel:+014414080",
+      info: "+353 89 249 7339",
+      href: "tel:+353 89 249 7339",
+      info2: "+353 89 977 8138",
+      href2: "tel:+353 89 977 8138",
     },
     {
       icon: ICONS.email,
-      info: "studentstiffin@gmail.com",
       info2: "infostudentstiffin@gmail.com",
-      href: "mailto:studentstiffin@gmail.com",
       href2: "mailto:infostudentstiffin@gmail.com",
     },
   ];

@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <div className="bg-[#13161C] py-[64px] font-Poppins px-6 md:px-10 xl:px-0">
       <Container>
-        <div className="font-Poppins flex flex-col xl:flex-row gap-12 md:gap-[96px]">
+        <div className="font-Poppins flex flex-col xl:flex-row justify-between gap-12 md:gap-[96px]">
           {/* Let’s Get Together */}
-          <div className="w-full">
+          <div className="">
             <h1 className="text-white font-semibold text-2xl leading-8">
               Let’s Get Together
             </h1>
@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="w-full">
+          <div className="">
             <h1 className="text-white font-semibold text-2xl leading-8">
               Quick Links
             </h1>
@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
 
           {/* Follow us on */}
-          <div className="w-full">
+          <div className="">
             <h1 className="text-white font-semibold text-2xl leading-8">
               Follow us on
             </h1>
@@ -97,7 +97,7 @@ const Footer = () => {
           </div>
 
           {/* Subscribe to the newsletter. */}
-          {/* <div className="w-full">
+          {/* <div className="">
             <h1 className="text-white font-semibold text-2xl leading-8">
               Subscribe to the newsletter.
             </h1>

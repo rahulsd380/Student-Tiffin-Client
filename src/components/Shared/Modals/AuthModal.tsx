@@ -4,7 +4,7 @@ import ChangePassword from "../../AuthComponents/ChangePassword";
 import ForgotPassword from "../../AuthComponents/ForgotPassword";
 import Login from "../../AuthComponents/Login";
 import Signup from "../../AuthComponents/Signup";
-import ForgotPasswordSentEmail from './../../AuthComponents/ForgotPasswordSentEmail';
+import ForgotPasswordSentEmail from "./../../AuthComponents/ForgotPasswordSentEmail";
 
 const AuthModal = () => {
   const { openModal, setOpenModal, modalType } = useModal();
@@ -35,7 +35,22 @@ const AuthModal = () => {
       <div
         className={`${
           openModal ? "scale-[1] opacity-100" : " scale-[0] opacity-0"
-        } w-[90%] md:w-[70%] lg:w-[529px] overflow-y-auto bg-[#ffffff] rounded-2xl ${modalType === "forgotPassword" || modalType === "forgotPasswordSentEmail" ? "px-12 py-12" : "px-6 py-6"} transition-all duration-300 ${modalType === "login" ? "h-fit" : modalType === "signup" ? "h-[480px] xl:h-[550px] 2xl:h-[700px]" : modalType === "forgotPassword" ? "h-fit" : modalType === "forgotPasswordSentEmail" ? "h-[252px]" : "h-fit"}`}
+        } w-[90%] md:w-[70%] lg:w-[529px] overflow-y-auto bg-[#ffffff] rounded-2xl ${
+          modalType === "forgotPassword" ||
+          modalType === "forgotPasswordSentEmail"
+            ? "px-12 py-12"
+            : "px-6 py-6"
+        } transition-all duration-300 ${
+          modalType === "login"
+            ? "h-fit"
+            : modalType === "signup"
+            ? "h-[480px] xl:h-[550px] 2xl:h-[700px]"
+            : modalType === "forgotPassword"
+            ? "h-fit"
+            : modalType === "forgotPasswordSentEmail"
+            ? "h-[252px]"
+            : "h-fit"
+        }`}
       >
         <div className="flex justify-end w-full">
           <img
