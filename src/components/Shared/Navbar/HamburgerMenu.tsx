@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ICONS } from "../../../assets";
 import { navLinks } from "./navlinks";
+import { useModal } from "../../../context/ModalContext";
 
 const HamburgerMenu = () => {
   const location = useLocation();
@@ -27,8 +28,22 @@ const HamburgerMenu = () => {
     };
   }, [isHamburgerOpen]);
 
+  const { setOpenModal, setModalType } = useModal();
+
+  const handleOpenLogin = () => {
+    setModalType("login");
+    setOpenModal(true);
+    setIsHamburgerOpen(false);
+  };
+
+  const handleOpenSignup = () => {
+    setModalType("signup");
+    setOpenModal(true);
+    setIsHamburgerOpen(false);
+  };
+
   return (
-    <div className="relative hamburgerMenu block md:hidden">
+    <div className="relative hamburgerMenu block lg:hidden">
       <img
         onClick={toggleHamburgerMenu}
         src={ICONS.menu}
@@ -66,6 +81,22 @@ const HamburgerMenu = () => {
             </Link>
           ))}
         </div>
+
+        <div className="flex flex-col gap-5 px-5">
+                <button
+                  onClick={handleOpenLogin}
+                  className="px-6 py-3 rounded-xl border border-[#DE3C4B] text-[#DE3C4B] font-semibold"
+                >
+                  Sign In
+                </button>
+
+                <button
+                  onClick={handleOpenSignup}
+                  className="px-6 py-3 text-white bg-primary-gradient rounded-xl font-semibold border border-[#DE3C4B]"
+                >
+                  Sign Up
+                </button>
+              </div>
       </div>
     </div>
   );

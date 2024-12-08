@@ -10,7 +10,6 @@ import { useUser } from "../../../context/UserContext";
 
 const Navbar = () => {
   const { user } = useUser();
-  console.log(user);
   const location = useLocation();
   const { setOpenModal, setModalType } = useModal();
 
@@ -56,7 +55,7 @@ const Navbar = () => {
             {user ? (
               <Dropdown />
             ) : (
-              <div className="flex items-center gap-5">
+              <div className="hidden lg:flex items-center gap-5">
                 <button
                   onClick={handleOpenLogin}
                   className="px-6 py-3 rounded-xl border border-[#DE3C4B] text-[#DE3C4B] font-semibold"

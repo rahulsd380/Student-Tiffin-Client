@@ -19,7 +19,7 @@ export const contactInfo = [
     },
     {
       icon: ICONS.phone,
-      info: "01-4414080",
+      info: "01-4414080 (Landline Number)",
       href: "tel:01-4414080"
     },
     {
