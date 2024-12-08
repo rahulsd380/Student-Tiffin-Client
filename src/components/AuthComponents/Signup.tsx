@@ -12,7 +12,7 @@ interface FormValues {
     confirm_password: string;
   }
 const Signup = () => {
-  const { setOpenModal, setModalType } = useModal();
+  const { setModalType } = useModal();
 
     const {
         register,
