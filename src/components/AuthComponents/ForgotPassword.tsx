@@ -1,6 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input2 from "../Shared/Input/Input2";
 import { useModal } from "../../context/ModalContext";
+import axiosInstance from "../../utils/axiosInstance";
+import { toast } from "sonner";
 
 type TFormValues = {
   email: string;
@@ -19,12 +21,21 @@ const ForgotPassword = () => {
     formState: { errors },
   } = useForm<TFormValues>();
 
-  const onSubmit: SubmitHandler<TFormValues> = (data) => {
-    console.log(data);
+  const handleForgotPassword: SubmitHandler<TFormValues> = async (data) => {
+    try {
+      const forgotPasswordData = {
+        email: data.email,
+      };
+
+      await axiosInstance.post("/auth/forgot-password", forgotPasswordData);
+      toast.success("Please check your email");
+    } catch (error) {
+      toast.error("Something went wrong! Please try again.");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit(handleForgotPassword)} className="flex flex-col gap-5">
       <Input2
         label="Enter Registered Email ID"
         name="email"

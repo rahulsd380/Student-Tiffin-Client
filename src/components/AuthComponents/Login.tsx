@@ -1,7 +1,9 @@
-
+import { toast } from "sonner";
 import { useModal } from "../../context/ModalContext";
+import axiosInstance from "../../utils/axiosInstance";
 import Input2 from "../Shared/Input/Input2";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useUser } from "../../context/UserContext";
 
 interface FormValues {
   email: string;
@@ -10,22 +12,39 @@ interface FormValues {
 
 const Login = () => {
   const { setOpenModal, setModalType } = useModal();
+  const { setUser } = useUser();
   const handleOpenForgotPasswordModal = () => {
     setModalType("forgotPassword");
     setOpenModal(true);
   };
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+  const handleLogin: SubmitHandler<FormValues> = async (data) => {
+    try {
+      const loginData = {
+        email: data.email,
+        password: data.password,
+      };
+
+      const response = await axiosInstance.post("/auth/login", loginData);
+      console.log(response.data);
+      toast.success("Welcome back!");
+      setUser(response.data.user)
+    } catch (error) {
+      toast.error("Something went wrong! Please try again.");
+    }
   };
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+      <form
+        onSubmit={handleSubmit(handleLogin)}
+        className="flex flex-col gap-5"
+      >
         <Input2
           label="Email"
           name="email"
@@ -38,6 +57,7 @@ const Login = () => {
           <Input2
             label="Password"
             name="password"
+            type="password"
             placeholder="Must be at least 6 Characters"
             validation={{ required: "Enter your password" }}
             register={register}
@@ -45,7 +65,10 @@ const Login = () => {
           />
 
           <div className="flex justify-end mt-[6px]">
-            <div onClick={handleOpenForgotPasswordModal} className="text-[#DE3C4B] font-Poppins text-sm font-medium cursor-pointer">
+            <div
+              onClick={handleOpenForgotPasswordModal}
+              className="text-[#DE3C4B] font-Poppins text-sm font-medium cursor-pointer"
+            >
               Forgot Password?
             </div>
           </div>

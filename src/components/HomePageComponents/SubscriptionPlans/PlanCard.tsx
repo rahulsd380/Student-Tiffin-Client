@@ -25,7 +25,7 @@ const PlanCard = ({
     if (data.meals) {
       return isDeliverySelected
         ? selectedMealData?.collectionPrice
-        : selectedMealData?.deliveryPrice
+        : selectedMealData?.deliveryPrice;
     }
     return isDeliverySelected ? data.collectionPrice : data.deliveryPrice;
   };
@@ -139,13 +139,13 @@ const PlanCard = ({
             {data.plan === "Weekly"
               ? "per week"
               : data.plan === "Daily"
-              ? "per meal"
+              ? "per meal + delivery changes"
               : "per month"}
           </p>
         </div>
 
         <button
-        onClick={() => setOpenModal(true)}
+          onClick={() => setOpenModal(true)}
           className={`${
             data.foodCategory === "Meat" ? "bg-[#DE3C4B]" : "bg-[#21CC00]"
           } p-4 size-[56px] rounded-full flex items-center justify-center`}
@@ -160,7 +160,7 @@ const PlanCard = ({
         classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
       >
         {/* Form */}
-        <ContactUsForm/>
+        <ContactUsForm />
       </Modal1>
     </div>
   );

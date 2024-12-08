@@ -11,6 +11,7 @@ import location from "../assets/icons/location.svg";
 import clock from "../assets/icons/clock.svg";
 import phone from "../assets/icons/phone.svg";
 import email from "../assets/icons/email.svg";
+import whatsApp from "../assets/icons/whats-app.svg";
 
 import stripDown from "../assets/icons/strip-down.svg";
 import stripTop from "../assets/icons/strip-top.svg";
@@ -25,6 +26,7 @@ import leftArrowWhite from "../assets/icons/leftArrowWhite.svg";
 import arrowOutward from "../assets/icons/arrow_outward.svg";
 import close from "../assets/icons/close-icon.svg";
 import pen from "../assets/icons/pen.svg";
+
 
 
 
@@ -69,6 +71,7 @@ export const ICONS = {
     location,
     clock,
     phone,
+    whatsApp,
     email,
     stripTop,
     stripDown,

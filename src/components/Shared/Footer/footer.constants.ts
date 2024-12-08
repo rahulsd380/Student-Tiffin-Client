@@ -9,12 +9,18 @@ export const contactInfo = [
       icon: ICONS.clock,
       info: "Monday- Saturday: 11 AM - 2.30 PM",
     },
+    
+    {
+      icon: ICONS.whatsApp,
+      info: "+353 89 249 7339",
+      href: "https://wa.me/353892497339",
+      info2: "+353 89 977 8138",
+      href2: "https://wa.me/353899778138",
+    },
     {
       icon: ICONS.phone,
-      info: "+353 89 249 7339",
-      href: "tel:+353 89 249 7339",
-      info2: "+353 89 977 8138",
-      href2: "tel:+353 89 977 8138",
+      info: "014414080",
+      href: "tel:014414080"
     },
     {
       icon: ICONS.email,

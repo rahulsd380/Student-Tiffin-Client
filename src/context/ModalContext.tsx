@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-type ModalType = "login" | "signup" | "forgotPassword" | "changePassword" | "forgotPasswordSentEmail" | null;
+type ModalType = "login" | "signup" | "verifyAccount" | "forgotPassword" | "changePassword" | "forgotPasswordSentEmail" | null;
 
 interface ModalContextType {
   openModal: boolean;

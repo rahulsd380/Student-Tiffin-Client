@@ -1,26 +1,47 @@
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Input2 from '../Shared/Input/Input2';
+import axiosInstance from '../../utils/axiosInstance';
+import { toast } from 'sonner';
+import { useModal } from '../../context/ModalContext';
 
 interface FormValues {
     email: string;
-    mobileNumber : string;
+    phone : string;
     password: string;
-    confirmPassword: string;
+    confirm_password: string;
   }
 const Signup = () => {
+  const { setOpenModal, setModalType } = useModal();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
       } = useForm<FormValues>();
     
-      const onSubmit: SubmitHandler<FormValues> = (data) => {
-        console.log(data);
+      const handleSignup: SubmitHandler<FormValues> = async (data) => {
+        try {
+          const signupData = {
+            email: data.email,
+            phone: data.phone,
+            password: data.password,
+            confirm_password: data.confirm_password,
+          };
+    
+          const response = await axiosInstance.post('/auth/signup', signupData);
+          console.log(response.data);
+          toast.success(`OTP sent to ${signupData.email}`);
+          setModalType("verifyAccount")
+          // toast.success("Account Created Successfully.");
+        } catch (error) {
+          toast.error("Something went wrong! Please try again.")
+        }
       };
+
     return (
         <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit(handleSignup)} className="flex flex-col gap-5">
         <Input2
           label="Email"
           name="email"
@@ -31,15 +52,16 @@ const Signup = () => {
         />
         <Input2
           label="Mobile Number"
-          name="mobileNumber"
+          name="phone"
           placeholder="Enter Mobile Number"
           validation={{ required: "Enter your mobile number" }}
           register={register}
-          error={errors.mobileNumber}
+          error={errors.phone}
         />
           <Input2
             label="Password"
             name="password"
+            type='password'
             placeholder="Must be at least 6 Characters"
             validation={{ required: "Enter your password" }}
             register={register}
@@ -47,11 +69,12 @@ const Signup = () => {
           />
           <Input2
             label="Password"
-            name="confirmPassword"
+            name="confirm_password"
+             type='password'
             placeholder="Must be at least 6 Characters"
             validation={{ required: "Re-type your password" }}
             register={register}
-            error={errors.confirmPassword}
+            error={errors.confirm_password}
           />
 
             <div>

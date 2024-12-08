@@ -6,10 +6,12 @@ import Dropdown from "./Dropdown";
 import { IMAGES } from "../../../assets";
 import AuthModal from "../Modals/AuthModal";
 import { useModal } from "../../../context/ModalContext";
+import { useUser } from "../../../context/UserContext";
 
 const Navbar = () => {
+  const { user } = useUser();
+  console.log(user);
   const location = useLocation();
-  const user = false;
   const { setOpenModal, setModalType } = useModal();
 
   const handleOpenLogin = () => {

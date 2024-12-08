@@ -22,7 +22,7 @@ const Footer = () => {
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="hover:underline"
+                        className="hover:underline w-fit"
                         target={
                           info.href.startsWith("tel:") ? undefined : "_blank"
                         }
