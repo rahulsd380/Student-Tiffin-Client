@@ -9,6 +9,7 @@ interface TextInputProps {
   type?: string;
   register: UseFormRegister<any>;
   error?: FieldError;
+  defaultValue? :any
 }
 
 const Input2: React.FC<TextInputProps> = ({
@@ -19,6 +20,7 @@ const Input2: React.FC<TextInputProps> = ({
   type = "text",
   register,
   error,
+  defaultValue,
 }) => {
   return (
     <div className="flex flex-col gap-2">
@@ -29,6 +31,7 @@ const Input2: React.FC<TextInputProps> = ({
       <input
         type={type}
         id={name}
+        defaultValue={defaultValue}
         className={`bg-[#6e788305] px-[18px] py-[14px] rounded-lg border ${
           error ? "border-[#DE3C4B]" : "border-[#6e78831f]"
         } focus:outline-none`}
