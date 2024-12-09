@@ -1,13 +1,30 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { ICONS } from "../../../assets";
 import { useModal } from "../../../context/ModalContext";
 import ChangePassword from "../../AuthComponents/ChangePassword";
 import ForgotPassword from "../../AuthComponents/ForgotPassword";
 import Login from "../../AuthComponents/Login";
 import Signup from "../../AuthComponents/Signup";
-import ForgotPasswordSentEmail from "./../../AuthComponents/ForgotPasswordSentEmail";
+import ForgotPasswordSentEmail from "../../AuthComponents/ForgotPasswordSentEmail";
 
 const AuthModal = () => {
-  const { openModal, setOpenModal, modalType } = useModal();
+  const { openModal, setOpenModal, modalType, setModalType } = useModal();
+  const location = useLocation();
+
+  // Parse the query parameters to control modal visibility
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const openModalQuery = queryParams.get("openModal");
+    const modalTypeQuery = queryParams.get("modalType");
+
+    if (openModalQuery === "true" && modalTypeQuery) {
+      setOpenModal(true);
+      setModalType(modalTypeQuery as "login" | "signup" | "forgotPassword" | "changePassword" | "forgotPasswordSentEmail");
+    } else {
+      setOpenModal(false);
+    }
+  }, [location.search, setOpenModal, setModalType]);
 
   const renderModalContent = () => {
     switch (modalType) {

@@ -1,9 +1,12 @@
 import { toast } from "sonner";
 import { useModal } from "../../context/ModalContext";
-import axiosInstance from "../../utils/axiosInstance";
+// import axiosInstance from "../../utils/axiosInstance";
 import Input2 from "../Shared/Input/Input2";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useUser } from "../../context/UserContext";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../../redux/Features/Auth/authApi";
+import { useNavigate } from "react-router-dom";
+import { setUser } from "../../redux/Features/Auth/authSlice";
 
 interface FormValues {
   email: string;
@@ -12,7 +15,6 @@ interface FormValues {
 
 const Login = () => {
   const { setOpenModal, setModalType } = useModal();
-  const { setUser } = useUser();
   const handleOpenForgotPasswordModal = () => {
     setModalType("forgotPassword");
     setOpenModal(true);
@@ -24,21 +26,45 @@ const Login = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const handleLogin: SubmitHandler<FormValues> = async (data) => {
-    try {
-      const loginData = {
-        email: data.email,
-        password: data.password,
-      };
+  const [login, { isLoading: isLoginIn }] = useLoginMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-      const response = await axiosInstance.post("/auth/login", loginData);
-      console.log(response.data);
-      toast.success("Welcome back!");
-      setUser(response.data.user)
-    } catch (error) {
-      toast.error("Something went wrong! Please try again.");
+  // const handleLogin: SubmitHandler<FormValues> = async (data) => {
+  //   try {
+  //     const loginData = {
+  //       email: data.email,
+  //       password: data.password,
+  //     };
+
+  //     const response = await axiosInstance.post("/auth/login", loginData);
+  //     toast.success("Welcome back!");
+  //     setUser(response.data.user)
+  //   } catch (error) {
+  //     toast.error("Something went wrong! Please try again.");
+  //   }
+  // };
+
+  const handleLogin: SubmitHandler<FormValues> = async (data) => {
+    const loginData = {
+      email: data.email,
+      password: data.password,
+    };
+    try {
+      const res = await login(loginData).unwrap();
+      const user = res.user;
+      toast.success("Logged in successfully.");
+      
+      // Set the user in Redux state
+      dispatch(setUser({ user }));
+      setOpenModal(false);
+      navigate("/");
+    } catch (err) {
+      toast.error("Invalid email or password!");
     }
   };
+
+
   return (
     <div>
       <form
@@ -78,7 +104,12 @@ const Login = () => {
           type="submit"
           className="px-6 py-3 text-white bg-[#DE3C4B] rounded-xl font-semibold w-full"
         >
-          Login
+          {
+            isLoginIn ? 
+            "Login in..."
+            :
+            "Login"
+          }
         </button>
       </form>
 

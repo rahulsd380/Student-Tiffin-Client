@@ -6,10 +6,12 @@ import Dropdown from "./Dropdown";
 import { IMAGES } from "../../../assets";
 import AuthModal from "../Modals/AuthModal";
 import { useModal } from "../../../context/ModalContext";
-import { useUser } from "../../../context/UserContext";
+import { useCurrentUser } from "../../../redux/Features/Auth/authSlice";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const { user } = useUser();
+  const user = useSelector(useCurrentUser)
+  console.log(user);
   const location = useLocation();
   const { setOpenModal, setModalType } = useModal();
 
