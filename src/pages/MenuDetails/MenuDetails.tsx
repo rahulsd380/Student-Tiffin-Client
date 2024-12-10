@@ -1,24 +1,14 @@
-import { Link } from "react-router-dom";
-import { ICONS, IMAGES } from "../../assets";
+import { Link, useParams } from "react-router-dom";
+import { ICONS } from "../../assets";
 import Badge from "../../components/Shared/Badge/Badge";
 import Container from "../../components/Shared/Container/Container";
+import { useGetSingleProductQuery } from "../../redux/Features/Menus/menuApi";
 
 const MenuDetails = () => {
-  const ingredients = [
-    "500 grams boneless chicken thighs, cut into bite-sized pieces",
-    "1 cup plain yogurt",
-    "2 tablespoons ginger-garlic paste",
-    "2 tablespoons lemon juice",
-    "1 teaspoon red chili powder",
-    "1 teaspoon garam masala",
-    "1 teaspoon ground cumin",
-    "Salt to taste",
-    "3 tablespoons unsalted butter",
-    "1 large onion, finely chopped",
-    "2 cups pureed tomatoes",
-    "1 cup heavy cream",
-    "Fresh cilantro for garnish",
-  ];
+  const { id } = useParams<{ id: string }>();
+
+  // Fetch the data using the id
+  const { data,isLoading } = useGetSingleProductQuery(id);
 
   return (
     <div className="bg-[#F4F8FA] px-5 md:px-10 xl:px-0 py-[64px] md:py-[96px]">
@@ -34,7 +24,7 @@ const MenuDetails = () => {
                 />
               </Link>
               <h1 className="text-[#293241] font-Poppins text-xl md:text-2xl font-semibold leading-6 md:leading-9">
-                Chicken Curry
+                {data?.product?.name}
               </h1>
             </div>
             <Badge variant="Meat" />
@@ -44,7 +34,7 @@ const MenuDetails = () => {
             {/* Image */}
             <div className="bg-[#FFEBEC] flex items-center justify-center rounded-2xl p-3 w-full lg:w-[390px] h-[200px]">
               <img
-                src={IMAGES.chcikenCurry}
+                src={data?.product?.image?.thumbnailUrl}
                 alt="menu-img"
                 className=" rounded-xl"
               />
@@ -53,18 +43,7 @@ const MenuDetails = () => {
             <div className="w-full flex flex-col gap-4">
               {/* Description */}
               <p className="text-[#6E7883] leading-6 font-Poppins">
-                Butter Chicken, also known as Murgh Makhani, is a classic Indian
-                dish that originates from the rich culinary traditions of North
-                India. This dish features tender chicken pieces marinated in a
-                blend of yogurt and spices, then grilled to perfection before
-                being simmered in a velvety sauce made from butter, cream, and
-                tomatoes. The result is a rich and creamy curry that is both
-                flavorful and comforting. The subtle spices, combined with the
-                sweetness of the tomatoes and the richness of the butter, create
-                a balanced taste that tantalizes the palate. Butter Chicken is
-                best served with naan or steamed basmati rice, making it a
-                beloved choice for anyone craving a taste of authentic Indian
-                cuisine.
+              {data?.product?.description}
               </p>
 
               <div>
@@ -72,7 +51,7 @@ const MenuDetails = () => {
                   Ingredients
                 </h1>
 
-                {ingredients.map((ingredient, index) => (
+                {data?.product?.ingredients?.map((ingredient:string, index:number) => (
                   <div key={index} className="flex items-center gap-1">
                     <img src={ICONS.pointer} alt="pointer" className="size-8" />
                     <p className="text-[#6E7883] leading-6 font-Poppins">
