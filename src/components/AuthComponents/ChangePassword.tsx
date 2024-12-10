@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input2 from "../Shared/Input/Input2";
-import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "sonner";
+import { useResetPasswordMutation } from "../../redux/Features/Auth/authApi";
 
 type TFormValues = {
   password: string;
@@ -15,23 +15,33 @@ const ChangePassword = () => {
     formState: { errors },
   } = useForm<TFormValues>();
 
+  const [resetPassword] = useResetPasswordMutation();
+  const token = "";
+
   const handleChangePassword: SubmitHandler<TFormValues> = async (data) => {
     try {
-      const changePasswordData = {
+      const resetPasswordData = {
         password: data.password,
         confirmPassword: data.confirmPassword,
       };
 
-      const response = await axiosInstance.post('/auth/reset-password/:token', changePasswordData);
+      const response = await resetPassword({
+        resetPasswordData,
+        token,
+      }).unwrap();
       console.log(response.data);
       toast.success("Password reset successfully.");
+      localStorage.removeItem("forgotPasswordEmail");
     } catch (error) {
-      toast.error("Something went wrong! Please try again.")
+      toast.error("Something went wrong! Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(handleChangePassword)} className="flex flex-col gap-5 pb-6">
+    <form
+      onSubmit={handleSubmit(handleChangePassword)}
+      className="flex flex-col gap-5 pb-6"
+    >
       <Input2
         label="New Password"
         name="password"

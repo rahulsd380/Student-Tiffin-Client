@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const user = useSelector(useCurrentUser)
-  console.log(user);
   const location = useLocation();
   const { setOpenModal, setModalType } = useModal();
 

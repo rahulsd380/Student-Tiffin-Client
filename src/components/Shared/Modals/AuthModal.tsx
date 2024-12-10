@@ -7,6 +7,7 @@ import ForgotPassword from "../../AuthComponents/ForgotPassword";
 import Login from "../../AuthComponents/Login";
 import Signup from "../../AuthComponents/Signup";
 import ForgotPasswordSentEmail from "../../AuthComponents/ForgotPasswordSentEmail";
+import VerifyAccount from "../../AuthComponents/VerifyAccount";
 
 const AuthModal = () => {
   const { openModal, setOpenModal, modalType, setModalType } = useModal();
@@ -20,7 +21,7 @@ const AuthModal = () => {
 
     if (openModalQuery === "true" && modalTypeQuery) {
       setOpenModal(true);
-      setModalType(modalTypeQuery as "login" | "signup" | "forgotPassword" | "changePassword" | "forgotPasswordSentEmail");
+      setModalType(modalTypeQuery as "login" | "signup" | "verifyAccount" | "forgotPassword" | "changePassword" | "forgotPasswordSentEmail");
     } else {
       setOpenModal(false);
     }
@@ -32,6 +33,8 @@ const AuthModal = () => {
         return <Login />;
       case "signup":
         return <Signup />;
+      case "verifyAccount":
+        return <VerifyAccount />;
       case "forgotPassword":
         return <ForgotPassword />;
       case "changePassword":
@@ -80,6 +83,7 @@ const AuthModal = () => {
         <h1 className="text-[#303D5C] font-Poppins text-xl sm:text-[28px] font-bold text-center mb-8">
           {modalType === "login" && "Login to Student Tiffin"}
           {modalType === "signup" && "Sign Up to Student Tiffin"}
+          {modalType === "verifyAccount" && "Verify Your Email"}
           {modalType === "forgotPassword" && "Forgot Password"}
           {modalType === "changePassword" && "Change Password"}
           {modalType === "forgotPasswordSentEmail" && "Forgot Password?"}
