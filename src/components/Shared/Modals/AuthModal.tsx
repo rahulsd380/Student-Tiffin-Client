@@ -76,7 +76,7 @@ const AuthModal = () => {
           modalType === "login"
             ? "h-fit"
             : modalType === "signup"
-            ? "h-[480px] xl:h-[600px] 2xl:h-[700px]"
+            ? "h-[480px] xl:h-[550px] 2xl:h-[700px]"
             : modalType === "forgotPassword"
             ? "h-fit"
             : modalType === "forgotPasswordSentEmail"
