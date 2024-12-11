@@ -13,7 +13,6 @@ const AuthModal = () => {
   const { openModal, setOpenModal, modalType, setModalType } = useModal();
   const location = useLocation();
 
-  // Parse the query parameters to control modal visibility
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const openModalQuery = queryParams.get("openModal");
@@ -21,7 +20,15 @@ const AuthModal = () => {
 
     if (openModalQuery === "true" && modalTypeQuery) {
       setOpenModal(true);
-      setModalType(modalTypeQuery as "login" | "signup" | "verifyAccount" | "forgotPassword" | "changePassword" | "forgotPasswordSentEmail");
+      setModalType(
+        modalTypeQuery as
+          | "login"
+          | "signup"
+          | "verifyAccount"
+          | "forgotPassword"
+          | "changePassword"
+          | "forgotPasswordSentEmail"
+      );
     } else {
       setOpenModal(false);
     }
@@ -46,11 +53,16 @@ const AuthModal = () => {
     }
   };
 
+  const handleCloseModal = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <div
       className={`${
         openModal ? " visible" : " invisible"
       } w-full h-screen fixed top-0 left-0 z-50 bg-[#0000002a] flex items-center justify-center transition-all duration-300`}
+      onClick={() => setOpenModal(false)}
     >
       <div
         className={`${
@@ -64,13 +76,14 @@ const AuthModal = () => {
           modalType === "login"
             ? "h-fit"
             : modalType === "signup"
-            ? "h-[480px] xl:h-[550px] 2xl:h-[700px]"
+            ? "h-[480px] xl:h-[600px] 2xl:h-[700px]"
             : modalType === "forgotPassword"
             ? "h-fit"
             : modalType === "forgotPasswordSentEmail"
             ? "h-[252px]"
             : "h-fit"
         }`}
+        onClick={handleCloseModal}
       >
         <div className="flex justify-end w-full">
           <img
