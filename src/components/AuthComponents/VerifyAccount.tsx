@@ -48,9 +48,9 @@ const VerifyAccount = () => {
 
   return (
     <div>
-       <div className="text-[#4A4A5A] font-Poppins text-lg text-center flex flex-col gap-1 items-center justify-center">
+      <div className="text-[#4A4A5A] font-Poppins text-lg text-center flex flex-col gap-1 items-center justify-center">
         <p className="text-[#4A4A5A] font-Poppins text-lg text-center">
-        OTP Has been sent to
+          OTP Has been sent to
         </p>
         <button
           onClick={() => setModalType("signup")}

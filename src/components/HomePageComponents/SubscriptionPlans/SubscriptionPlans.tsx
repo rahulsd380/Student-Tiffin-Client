@@ -2,9 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../../Shared/Container/Container";
 import PlanCard from "./PlanCard";
 import { ICONS } from "../../../assets";
-import { collectionPoints, dailyData, deliveryPoints, monthlyData, weeklyData } from "./subscription.mockData";
+import {
+  collectionPoints,
+  dailyData,
+  deliveryPoints,
+  monthlyData,
+  weeklyData,
+} from "./subscription.mockData";
 
-const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
+const SubscriptionPlans = ({
+  isHeadingVisible,
+}: {
+  isHeadingVisible: boolean;
+}) => {
   const [isDeliveryInfoOpen, setIsDeliveryInfoOpen] = useState(false);
   const [isCollectionInfoOpen, setIsCollectionInfoOpen] = useState(false);
   const [isDeliverySelected, setIsDeliverySelected] = useState(false);
@@ -26,17 +36,14 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
     return () => document.removeEventListener("mousedown", close);
   }, []);
 
- 
-
   return (
     <Container>
       <div className="flex flex-col gap-12 px-6 md:px-10 xl:px-0 w-full">
-       {
-        isHeadingVisible &&
-        <h1 className="text-[#DE3C4B] font-Rajdhani text-[56px] md:text-[96px] font-bold leading-[64px] md:leading-[110px] uppercase text-center">
-        Subscription Plans
+        {isHeadingVisible && (
+          <h1 className="text-[#DE3C4B] font-Rajdhani text-[56px] md:text-[96px] font-bold leading-[64px] md:leading-[110px] uppercase text-center">
+            Subscription Plans
           </h1>
-       }
+        )}
 
         <div className="flex items-center justify-center xl:justify-end">
           <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-[159px]">
@@ -60,10 +67,18 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
             <div className="flex items-center gap-3 relative">
               <button
                 onClick={() => setIsDeliveryInfoOpen(!isDeliveryInfoOpen)}
-                className={`${!isDeliverySelected? "text-[#DE3C4B]" : "text-[#8D9095]"} font-Poppins font-medium leading-5 flex items-center gap-1`}
+                className={`${
+                  !isDeliverySelected ? "text-[#DE3C4B]" : "text-[#8D9095]"
+                } font-Poppins font-medium leading-5 flex items-center gap-1`}
               >
                 Delivery
-                <img src={!isDeliverySelected ? ICONS.infoIconRed : ICONS.infoIconGray} alt="" className="size-4" />
+                <img
+                  src={
+                    !isDeliverySelected ? ICONS.infoIconRed : ICONS.infoIconGray
+                  }
+                  alt=""
+                  className="size-4"
+                />
               </button>
               {/* Dropdown for delivery */}
               <div
@@ -108,7 +123,9 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
               >
                 <div
                   className={`${
-                    isDeliverySelected ? "translate-x-[27px]" : "translate-x-[0px]"
+                    isDeliverySelected
+                      ? "translate-x-[27px]"
+                      : "translate-x-[0px]"
                   } size-[23px] pb-1 transition-all duration-500 rounded-full bg-[#fff]`}
                   style={{ boxShadow: "1px 2px 5px 2px rgb(0,0,0,0.1)" }}
                 ></div>
@@ -117,10 +134,18 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
               {/* Button to see collection list */}
               <button
                 onClick={() => setIsCollectionInfoOpen(!isCollectionInfoOpen)}
-                className={`${isDeliverySelected? "text-[#DE3C4B]" : "text-[#8D9095]"} font-Poppins font-medium leading-5 flex items-center gap-1`}
+                className={`${
+                  isDeliverySelected ? "text-[#DE3C4B]" : "text-[#8D9095]"
+                } font-Poppins font-medium leading-5 flex items-center gap-1`}
               >
                 Collection
-                <img src={isDeliverySelected ? ICONS.infoIconRed : ICONS.infoIconGray} alt="" className="size-4" />
+                <img
+                  src={
+                    isDeliverySelected ? ICONS.infoIconRed : ICONS.infoIconGray
+                  }
+                  alt=""
+                  className="size-4"
+                />
               </button>
 
               {/* Dropdown for collection */}
@@ -133,7 +158,7 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
                 }`}
               >
                 <h1 className="text-[#293241] font-Poppins font-medium leading-5">
-                Drop Points
+                  Drop Points
                 </h1>
                 <div className="flex flex-col gap-[10px] mt-5">
                   {collectionPoints.map((info, idx) => (
@@ -162,12 +187,29 @@ const SubscriptionPlans = ({isHeadingVisible}:{isHeadingVisible:boolean}) => {
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
           {planMode === "Daily"
-            ? dailyData.map((data) => <PlanCard data={data} isDeliverySelected={isDeliverySelected} />)
+            ? dailyData.map((data) => (
+                <PlanCard
+                  data={data}
+                  isDeliverySelected={isDeliverySelected}
+                  planMode={planMode}
+                />
+              ))
             : planMode === "Weekly"
-            ? weeklyData.map((data) => <PlanCard data={data} isDeliverySelected={isDeliverySelected} />)
-            : monthlyData.map((data) => <PlanCard data={data} isDeliverySelected={isDeliverySelected} />)}
+            ? weeklyData.map((data) => (
+                <PlanCard
+                  data={data}
+                  isDeliverySelected={isDeliverySelected}
+                  planMode={planMode}
+                />
+              ))
+            : monthlyData.map((data) => (
+                <PlanCard
+                  data={data}
+                  isDeliverySelected={isDeliverySelected}
+                  planMode={planMode}
+                />
+              ))}
         </div>
-
 
         {/* Plan cards */}
       </div>

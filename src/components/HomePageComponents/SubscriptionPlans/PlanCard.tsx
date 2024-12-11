@@ -4,13 +4,37 @@ import { ICONS } from "../../../assets";
 import Badge from "../../Shared/Badge/Badge";
 import ContactUsForm from "../../Shared/ContactUsForm/ContactUsForm";
 import Modal1 from "../../Shared/Modals/Modal1";
+import { Link } from "react-router-dom";
+
+type TMeal = {
+  mealsQuantity: number;
+  availability: boolean;
+  deliveryPrice: number;
+  collectionPrice: number;
+};
+
+export type TSelectedPlanData = {
+  name?: string;
+  foodCategory?: string;
+  madeOf?: string;
+  plan?: string;
+  availability?: boolean;
+  priceBefore?: number;
+  deliveryPrice?: number;
+  collectionPrice?: number;
+  price?: number;
+  meals?: TMeal[];
+  selectedMeal?: number;
+};
 
 const PlanCard = ({
   data,
   isDeliverySelected,
-}: {
+}: // planMode,
+{
   data: any;
   isDeliverySelected: boolean;
+  planMode?: any;
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState("24 Meals");
@@ -28,6 +52,56 @@ const PlanCard = ({
         : selectedMealData?.deliveryPrice;
     }
     return isDeliverySelected ? data.collectionPrice : data.deliveryPrice;
+  };
+
+  const handleGetItNow = () => {
+    // Initialize the selected plan data structure
+    const selectedPlanData: TSelectedPlanData = {
+      name: data?.name,
+      foodCategory: data?.foodCategory,
+      madeOf: data?.madeOf,
+      plan: data?.plan,
+      availability: data?.availability,
+    };
+
+    // For Daily and Weekly plans, store the prices and other details
+    if (data.plan === "Daily" || data.plan === "Weekly") {
+      selectedPlanData.priceBefore = data.priceBefore;
+      selectedPlanData.deliveryPrice = data.deliveryPrice;
+      selectedPlanData.collectionPrice = data.collectionPrice;
+
+      // If delivery or collection is selected, adjust the price
+      selectedPlanData.price = !isDeliverySelected
+        ? data.deliveryPrice
+        : data.collectionPrice;
+    }
+
+    // For Monthly plans, include meal details, pricing, and selected meal data
+    if (data.plan === "Monthly" && data.meals) {
+      const selectedMealData = data.meals?.find(
+        (meal: any) => meal.mealsQuantity === selectedMeal
+      );
+
+      selectedPlanData.meals = data.meals.map((meal: any) => ({
+        mealsQuantity: meal.mealsQuantity,
+        availability: meal.availability,
+        deliveryPrice: meal.deliveryPrice,
+        collectionPrice: meal.collectionPrice,
+      }));
+
+      selectedPlanData.selectedMeal = Number(selectedMeal); // Ensure it's a number
+      selectedPlanData.price = !isDeliverySelected
+        ? selectedMealData?.deliveryPrice
+        : selectedMealData?.collectionPrice;
+
+      // Check that price is a number, fallback to 0 if undefined
+      if (typeof selectedPlanData.price !== "number") {
+        selectedPlanData.price = 0;
+      }
+    }
+
+    // Store to localStorage
+    localStorage.setItem("selectedPlan", JSON.stringify(selectedPlanData));
   };
 
   return (
@@ -144,14 +218,15 @@ const PlanCard = ({
           </p>
         </div>
 
-        <button
-          onClick={() => setOpenModal(true)}
+        <Link
+          to={"/checkout"}
+          onClick={handleGetItNow}
           className={`${
             data.foodCategory === "Meat" ? "bg-[#DE3C4B]" : "bg-[#21CC00]"
           } p-4 size-[56px] rounded-full flex items-center justify-center`}
         >
           <img src={ICONS.rightArrowWhite} alt="arrow" />
-        </button>
+        </Link>
       </div>
 
       <Modal1

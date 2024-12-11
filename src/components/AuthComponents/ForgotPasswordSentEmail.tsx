@@ -6,7 +6,6 @@ const ForgotPasswordSentEmail = () => {
   const [email, setEmail] = useState<string | null>(null);
 
   const { setOpenModal, setModalType } = useModal();
-  
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("forgotPasswordEmail");

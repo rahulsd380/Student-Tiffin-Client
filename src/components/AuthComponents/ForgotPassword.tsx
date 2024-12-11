@@ -17,7 +17,7 @@ const ForgotPassword = () => {
     formState: { errors },
   } = useForm<TFormValues>();
 
-  const [forgotPassword, {isLoading}] = useForgotPasswordMutation();
+  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
 
   const handleForgotPassword: SubmitHandler<TFormValues> = async (data) => {
     try {
@@ -36,7 +36,10 @@ const ForgotPassword = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleForgotPassword)} className="flex flex-col gap-5">
+    <form
+      onSubmit={handleSubmit(handleForgotPassword)}
+      className="flex flex-col gap-5"
+    >
       <Input2
         label="Enter Registered Email ID"
         name="email"
@@ -51,19 +54,18 @@ const ForgotPassword = () => {
         className="px-6 py-3 text-white bg-[#DE3C4B] rounded-xl font-semibold w-full"
       >
         {isLoading ? (
-            <div className="flex items-center justify-center gap-3">
-              <p>Loading</p>
-              {/* Loader */}
-              <div className="size-7 flex gap-1 items-center justify-center">
-                <div className="size-[6px] animate-[bounce_.6s_linear_.2s_infinite] bg-white rounded-full"></div>
-                <div className="size-[6px] animate-[bounce_.6s_linear_.3s_infinite] bg-white rounded-full"></div>
-                <div className="size-[6px] animate-[bounce_.6s_linear_.4s_infinite] bg-white rounded-full"></div>
-              </div>
+          <div className="flex items-center justify-center gap-3">
+            <p>Loading</p>
+            {/* Loader */}
+            <div className="size-7 flex gap-1 items-center justify-center">
+              <div className="size-[6px] animate-[bounce_.6s_linear_.2s_infinite] bg-white rounded-full"></div>
+              <div className="size-[6px] animate-[bounce_.6s_linear_.3s_infinite] bg-white rounded-full"></div>
+              <div className="size-[6px] animate-[bounce_.6s_linear_.4s_infinite] bg-white rounded-full"></div>
             </div>
-          ) : (
-            "Send Confirmation Email"
-          )}
-        
+          </div>
+        ) : (
+          "Send Confirmation Email"
+        )}
       </button>
     </form>
   );

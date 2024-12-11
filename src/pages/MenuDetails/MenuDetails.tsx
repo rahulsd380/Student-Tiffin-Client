@@ -8,7 +8,7 @@ const MenuDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   // Fetch the data using the id
-  const { data,isLoading } = useGetSingleProductQuery(id);
+  const { data } = useGetSingleProductQuery(id);
 
   return (
     <div className="bg-[#F4F8FA] px-5 md:px-10 xl:px-0 py-[64px] md:py-[96px]">
@@ -27,7 +27,7 @@ const MenuDetails = () => {
                 {data?.product?.name}
               </h1>
             </div>
-            <Badge variant="Meat" />
+              <Badge variant="Meat" />
           </div>
 
           <div className="flex flex-col lg:flex-row gap-9 w-full">
@@ -43,7 +43,7 @@ const MenuDetails = () => {
             <div className="w-full flex flex-col gap-4">
               {/* Description */}
               <p className="text-[#6E7883] leading-6 font-Poppins">
-              {data?.product?.description}
+                {data?.product?.description}
               </p>
 
               <div>
@@ -51,14 +51,20 @@ const MenuDetails = () => {
                   Ingredients
                 </h1>
 
-                {data?.product?.ingredients?.map((ingredient:string, index:number) => (
-                  <div key={index} className="flex items-center gap-1">
-                    <img src={ICONS.pointer} alt="pointer" className="size-8" />
-                    <p className="text-[#6E7883] leading-6 font-Poppins">
-                      {ingredient}
-                    </p>
-                  </div>
-                ))}
+                {data?.product?.ingredients?.map(
+                  (ingredient: string, index: number) => (
+                    <div key={index} className="flex items-center gap-1">
+                      <img
+                        src={ICONS.pointer}
+                        alt="pointer"
+                        className="size-8"
+                      />
+                      <p className="text-[#6E7883] leading-6 font-Poppins">
+                        {ingredient}
+                      </p>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>

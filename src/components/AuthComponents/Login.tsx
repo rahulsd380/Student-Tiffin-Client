@@ -19,7 +19,7 @@ const Login = () => {
     setModalType("forgotPassword");
     setOpenModal(true);
   };
-  
+
   const {
     register,
     handleSubmit,
@@ -54,7 +54,7 @@ const Login = () => {
       const res = await login(loginData).unwrap();
       const user = res.user;
       toast.success("Logged in successfully.");
-      
+
       // Set the user in Redux state
       dispatch(setUser({ user }));
       setOpenModal(false);
@@ -63,7 +63,6 @@ const Login = () => {
       toast.error("Invalid email or password!");
     }
   };
-
 
   return (
     <div>
@@ -104,12 +103,7 @@ const Login = () => {
           type="submit"
           className="px-6 py-3 text-white bg-[#DE3C4B] rounded-xl font-semibold w-full"
         >
-          {
-            isLoginIn ? 
-            "Login in..."
-            :
-            "Login"
-          }
+          {isLoginIn ? "Login in..." : "Login"}
         </button>
       </form>
 
