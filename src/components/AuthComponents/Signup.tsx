@@ -110,7 +110,7 @@ const Signup = () => {
 
       <div className="flex justify-center mt-8">
         <div className="text-[#DE3C4B] font-Poppins text-sm font-normal">
-          Already registered? <button className=" font-medium">Login</button>
+          Already registered? <button onClick={() => setModalType("login")} className=" font-medium">Login</button>
         </div>
       </div>
     </div>

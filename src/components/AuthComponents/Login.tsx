@@ -109,7 +109,7 @@ const Login = () => {
 
       <div className="flex justify-center mt-8">
         <div className="text-[#DE3C4B] font-Poppins text-sm font-normal">
-          New to Career Hub? <button className=" font-medium">Signup</button>
+          New to Student Tiffin? <button onClick={() => setModalType("signup")} className=" font-medium">Signup</button>
         </div>
       </div>
     </div>

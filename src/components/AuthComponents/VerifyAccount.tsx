@@ -22,7 +22,7 @@ const VerifyAccount = () => {
     formState: { errors },
   } = useForm<TFormValues>();
 
-  const [verifyAccount] = useVerifyAccountMutation();
+  const [verifyAccount, { isLoading }] = useVerifyAccountMutation();
 
   useEffect(() => {
     // Retrieve email from localStorage
@@ -37,10 +37,11 @@ const VerifyAccount = () => {
         otp: data.otp,
       };
       await verifyAccount(verifyAccountData).unwrap();
-      toast.success("Account created successfully");
+      toast.success("Account created successfully. Please login.");
       localStorage.removeItem("email");
-      setOpenModal(false);
       navigate("/");
+      setOpenModal(true);
+      setModalType("login")
     } catch (error) {
       toast.error("Something went wrong! Please try again.");
     }
@@ -83,7 +84,19 @@ const VerifyAccount = () => {
           type="submit"
           className="px-6 py-3 text-white bg-[#DE3C4B] rounded-xl font-semibold w-full"
         >
-          Verify OTP
+          {isLoading ? (
+            <div className="flex items-center justify-center gap-3">
+              <p>Loading</p>
+              {/* Loader */}
+              <div className="size-7 flex gap-1 items-center justify-center">
+                <div className="size-[6px] animate-[bounce_.6s_linear_.2s_infinite] bg-white rounded-full"></div>
+                <div className="size-[6px] animate-[bounce_.6s_linear_.3s_infinite] bg-white rounded-full"></div>
+                <div className="size-[6px] animate-[bounce_.6s_linear_.4s_infinite] bg-white rounded-full"></div>
+              </div>
+            </div>
+          ) : (
+            "Verify OTP"
+          )}
         </button>
       </form>
       <div className="flex items-center justify-center mt-8">
