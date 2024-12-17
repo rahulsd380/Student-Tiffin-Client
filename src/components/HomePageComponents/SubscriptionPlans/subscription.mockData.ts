@@ -12,7 +12,7 @@ export const weeklyData = [
     {
         name: "Meat Meal",
         foodCategory: "Meat",
-        madeOf: ["Daal (1 bowl)","Rice (1 bowl)", "4 Tawa Chapathi", "1 Seasonal Veg"],
+        madeOf: ["Daal (1 bowl)","Rice (1 bowl)", "4 Tawa Chapathi", "1 Chicken or 1 Lamb"],
         deliveryPrice: 90,
         collectionPrice: 80,
         priceBefore: 36,
