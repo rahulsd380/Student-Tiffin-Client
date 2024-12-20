@@ -30,21 +30,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const handleLogin: SubmitHandler<FormValues> = async (data) => {
-  //   try {
-  //     const loginData = {
-  //       email: data.email,
-  //       password: data.password,
-  //     };
-
-  //     const response = await axiosInstance.post("/auth/login", loginData);
-  //     toast.success("Welcome back!");
-  //     setUser(response.data.user)
-  //   } catch (error) {
-  //     toast.error("Something went wrong! Please try again.");
-  //   }
-  // };
-
   const handleLogin: SubmitHandler<FormValues> = async (data) => {
     const loginData = {
       email: data.email,
@@ -109,7 +94,13 @@ const Login = () => {
 
       <div className="flex justify-center mt-8">
         <div className="text-[#DE3C4B] font-Poppins text-sm font-normal">
-          New to Student Tiffin? <button onClick={() => setModalType("signup")} className=" font-medium">Signup</button>
+          New to Student Tiffin?{" "}
+          <button
+            onClick={() => setModalType("signup")}
+            className=" font-medium"
+          >
+            Signup
+          </button>
         </div>
       </div>
     </div>

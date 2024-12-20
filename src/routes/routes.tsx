@@ -16,6 +16,7 @@ import OrderSummary from "../pages/OrderSummary/OrderSummary";
 import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 import PaymentSuccessPage from "../pages/PaymentSuccess/PaymentSuccessPage";
 import { ICONS } from "../assets";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -49,34 +50,52 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/order-summary",
-        element: <OrderSummary />,
+        element: (
+          <ProtectedRoute>
+            <OrderSummary />
+          </ProtectedRoute>
+        ),
       },
       // After ONLINE payment it will show
       {
         path: "/success",
-        element: <PaymentSuccess />,
+        element: (
+          <ProtectedRoute>
+            <PaymentSuccess />
+          </ProtectedRoute>
+        ),
       },
       // After COD payment it will show
       {
         path: "/payment-success",
         element: (
-          <PaymentSuccessPage
-            icon={ICONS.orderConfirmed}
-            title="Order Confirmed!!"
-            description1="Congratulations!! We have received your order."
-            description2="Thanks for subscribing to the plan! Your order will be processed, and we will reach out to you shortly."
-          />
+          <ProtectedRoute>
+            <PaymentSuccessPage
+              icon={ICONS.orderConfirmed}
+              title="Order Confirmed!!"
+              description1="Congratulations!! We have received your order."
+              description2="Thanks for subscribing to the plan! Your order will be processed, and we will reach out to you shortly."
+            />
+          </ProtectedRoute>
         ),
       },
     ],
   },
   {
     path: "/setting",
-    element: <SettingLayout />,
+    element: (
+      <ProtectedRoute>
+        <SettingLayout />
+      </ProtectedRoute>
+    ),
     errorElement: <NotFoundPage />,
     children: [
       {
