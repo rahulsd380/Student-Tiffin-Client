@@ -5,9 +5,10 @@ import {
   deliveryPoints,
 } from "../../HomePageComponents/SubscriptionPlans/subscription.mockData";
 import { TSelectedPlanData } from "../../HomePageComponents/SubscriptionPlans/PlanCard";
-import { useMakePaymentMutation } from "../../../redux/Features/Payment/paymentApi";
+// import { useMakePaymentMutation } from "../../../redux/Features/Payment/paymentApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import axios from "axios";
 
 type TCheckoutFormProps = {
   selectedPlanType: string;
@@ -33,13 +34,66 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
   const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("");
   console.log(selectedPickupOption);
   const navigate = useNavigate();
-  const [makePayment, { isLoading }] = useMakePaymentMutation();
+  // const [makePayment, { isLoading }] = useMakePaymentMutation();
   console.log(product);
   const planTypes = ["Daily", "Weekly", "Monthly"];
 
   const [paymentMode, setPaymentMode] = useState<"cod" | "online">("cod");
 
+  // const handleMakePayment = async () => {
+  //   try {
+  //     const paymentData = {
+  //       name: product?.name,
+  //       productId: product?.productId,
+  //       total: totalPrice,
+  //       paymentType:
+  //         product?.plan === "Monthly"
+  //           ? "ONLINE"
+  //           : product?.plan === "Weekly"
+  //           ? "ONLINE"
+  //           : paymentMode === "cod"
+  //           ? "COD"
+  //           : "ONLINE",
+  //       duration:
+  //         product?.plan === "Monthly"
+  //           ? "MONTHLY"
+  //           : product?.plan === "Weekly"
+  //           ? "WEEKLY"
+  //           : "DAILY",
+  //       pickUpLocation:
+  //         selectedPlanType === "pickup"
+  //           ? selectedPickupOption
+  //           : selectedPlanType === "delivery"
+  //           ? selectedDeliveryOption
+  //           : "",
+  //       startDate: new Date(),
+  //       endDate: expiredIn,
+  //       totalMeals:
+  //         product?.plan === "Monthly"
+  //           ? product?.selectedMeal
+  //           : product?.plan === "Weekly"
+  //           ? product?.selectedMeal
+  //           : 0,
+  //       mealType: product?.foodCategory?.toUpperCase(),
+  //     };
+
+  //     const response = await makePayment(paymentData).unwrap();
+  //     if (response?.success && response?.url) {
+  //       const url = response?.url;
+  //       window.location.href = url;
+  //     } else {
+  //       toast.success("Subscription confirmed successfully.");
+  //       navigate("/payment-success");
+  //     }
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+
   const handleMakePayment = async () => {
+
     try {
       const paymentData = {
         name: product?.name,
@@ -75,21 +129,24 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             : 0,
         mealType: product?.foodCategory?.toUpperCase(),
       };
-
-      const response = await makePayment(paymentData).unwrap();
-      if (response?.success && response?.url) {
-        const url = response?.url;
+  
+      const response = await axios.post('https://student-tiffin-backend.vercel.app/api/v1/subscription/create', paymentData, {
+        withCredentials: true, // Include credentials in the request
+      });
+  
+      if (response?.data?.success && response?.data?.url) {
+        const url = response?.data?.url;
         window.location.href = url;
       } else {
         toast.success("Subscription confirmed successfully.");
         navigate("/payment-success");
       }
-      console.log(response);
+      console.log(response?.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("An error occurred while processing the payment.");
     }
   };
-
   return (
     <div className="p-5 flex flex-col gap-8">
       {/* Radio Inputs IPickup, delivery, subscribe) */}
@@ -313,11 +370,18 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
       </div>
 
       {/* Payment Button */}
-      <button
+      {/* <button
         onClick={handleMakePayment}
         className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold"
       >
         {isLoading ? "Please wait..." : `Proceed to Pay €${totalPrice}`}
+      </button> */}
+
+      <button
+        onClick={handleMakePayment}
+        className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold"
+      >
+        {`Proceed to Pay €${totalPrice}`}
       </button>
 
       {/* Payment Methods */}
