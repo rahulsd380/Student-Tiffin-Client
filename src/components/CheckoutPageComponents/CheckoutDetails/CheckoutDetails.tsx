@@ -16,8 +16,9 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
   selectedOption,
   totalPrice,
   setTotalPrice,
+  expiredIn
 }) => {
-  const [expiredIn, setExpiredIn] = useState<string>("");
+  // const [expiredIn, setExpiredIn] = useState<string>("");
 
   
 
@@ -32,24 +33,24 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
   }, [selectedOption, product?.price, setTotalPrice]);
   
 
-  useEffect(() => {
-    const calculateExpiration = () => {
-      const today = new Date();
-      const expirationDate = new Date(today);
+  // useEffect(() => {
+  //   const calculateExpiration = () => {
+  //     const today = new Date();
+  //     const expirationDate = new Date(today);
 
-      if (product?.plan === "Daily") {
-        expirationDate.setDate(today.getDate()); // today
-      } else if (product?.plan === "Weekly") {
-        expirationDate.setDate(today.getDate() + 7); // 7 days from today
-      } else if (product?.plan === "Monthly") {
-        expirationDate.setMonth(today.getMonth() + 1); // 1 month from today
-      }
-      const formattedDate = expirationDate.toLocaleDateString();
-      setExpiredIn(formattedDate);
-    };
+  //     if (product?.plan === "Daily") {
+  //       expirationDate.setDate(today.getDate()); // today
+  //     } else if (product?.plan === "Weekly") {
+  //       expirationDate.setDate(today.getDate() + 7); // 7 days from today
+  //     } else if (product?.plan === "Monthly") {
+  //       expirationDate.setMonth(today.getMonth() + 1); // 1 month from today
+  //     }
+  //     const formattedDate = expirationDate.toLocaleDateString();
+  //     setExpiredIn(formattedDate);
+  //   };
 
-    calculateExpiration();
-  }, [product?.plan]);
+  //   calculateExpiration();
+  // }, [product?.plan]);
 
   // const [planPrice, setPlanPrice] = useState(0);
 
@@ -74,6 +75,9 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
   // }, [product]);
 
   // console.log(planPrice);
+
+
+
 
 
   return (

@@ -26,6 +26,8 @@ import leftArrowWhite from "../assets/icons/leftArrowWhite.svg";
 import arrowOutward from "../assets/icons/arrow_outward.svg";
 import close from "../assets/icons/close-icon.svg";
 import pen from "../assets/icons/pen.svg";
+import paymentSuccess from "../assets/icons/payment-successfull.svg";
+import orderConfirmed from "../assets/icons/order-confirmed.svg";
 
 
 
@@ -86,6 +88,8 @@ export const ICONS = {
     arrowOutward,
     close,
     pen,
+    paymentSuccess,
+    orderConfirmed
 };
 
 

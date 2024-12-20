@@ -27,6 +27,27 @@ useEffect(() => {
   }
 }, [product]);
 
+
+const [expiredIn, setExpiredIn] = useState<string>("");
+useEffect(() => {
+  const calculateExpiration = () => {
+    const today = new Date();
+    const expirationDate = new Date(today);
+
+    if (product?.plan === "Daily") {
+      expirationDate.setDate(today.getDate()); // today
+    } else if (product?.plan === "Weekly") {
+      expirationDate.setDate(today.getDate() + 7); // 7 days from today
+    } else if (product?.plan === "Monthly") {
+      expirationDate.setMonth(today.getMonth() + 1); // 1 month from today
+    }
+    const formattedDate = expirationDate.toLocaleDateString();
+    setExpiredIn(formattedDate);
+  };
+
+  calculateExpiration();
+}, [product?.plan]);
+
   return (
     <div className="bg-[#F4F8FA] flex items-center justify-center py-[34px]">
       <div className="bg-white rounded-b-none md:rounded-b-xl w-full md:w-[530px] mx-auto">
@@ -36,6 +57,7 @@ useEffect(() => {
           selectedOption={selectedOption}
           totalPrice={totalPrice}
           setTotalPrice={setTotalPrice}
+          expiredIn={expiredIn}
         />
         <CheckoutForm
           selectedPlanType={selectedPlanType}
@@ -44,6 +66,7 @@ useEffect(() => {
           setSelectedOption={setSelectedOption}
           product={product}
           totalPrice={totalPrice}
+          expiredIn={expiredIn}
         />
       </div>
     </div>

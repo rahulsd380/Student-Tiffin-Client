@@ -13,6 +13,9 @@ import RecentOrders from "../pages/Settings/RecentOrders/RecentOrders";
 import SubscriptionPage from "../pages/Settings/SubscriptionPage/SubscriptionPage";
 import Checkout from "../pages/Checkout/Checkout";
 import OrderSummary from "../pages/OrderSummary/OrderSummary";
+import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
+import PaymentSuccessPage from "../pages/PaymentSuccess/PaymentSuccessPage";
+import { ICONS } from "../assets";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +54,23 @@ export const router = createBrowserRouter([
       {
         path: "/order-summary",
         element: <OrderSummary />,
+      },
+      // After ONLINE payment it will show
+      {
+        path: "/success",
+        element: <PaymentSuccess />,
+      },
+      // After COD payment it will show
+      {
+        path: "/payment-success",
+        element: (
+          <PaymentSuccessPage
+            icon={ICONS.orderConfirmed}
+            title="Order Confirmed!!"
+            description1="Congratulations!! We have received your order."
+            description2="Thanks for subscribing to the plan! Your order will be processed, and we will reach out to you shortly."
+          />
+        ),
       },
     ],
   },

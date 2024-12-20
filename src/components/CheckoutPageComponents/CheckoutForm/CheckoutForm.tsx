@@ -5,6 +5,9 @@ import {
   deliveryPoints,
 } from "../../HomePageComponents/SubscriptionPlans/subscription.mockData";
 import { TSelectedPlanData } from "../../HomePageComponents/SubscriptionPlans/PlanCard";
+import { useMakePaymentMutation } from "../../../redux/Features/Payment/paymentApi";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 type TCheckoutFormProps = {
   selectedPlanType: string;
@@ -23,11 +26,51 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
   setSelectedOption,
   product,
   totalPrice,
+  expiredIn
 }) => {
-  console.log(selectedPlanType);
+  const [selectedPickupOption, setSelectedPickupOption] = useState("");
+  const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("");
+  const handlePickupChange = (e) => {
+    setSelectedPickupOption(e.target.value);
+  };
+  console.log(selectedPickupOption);
+  const navigate = useNavigate();
+  const [makePayment, {isLoading}] = useMakePaymentMutation();
+  console.log(product)
   const planTypes = ["Daily", "Weekly", "Monthly"];
 
   const [paymentMode, setPaymentMode] = useState<"cod" | "online">("cod");
+
+  const handleMakePayment = async () => {
+    try {
+      const paymentData = {
+        name: product?.name,
+        productId: product?.productId,
+        total: totalPrice,
+        paymentType: product?.plan === "Monthly" ? "ONLINE" : product?.plan === "Weekly" ? "ONLINE" : paymentMode === "cod" ? "COD" : "ONLINE",
+        duration: product?.plan === "Monthly" ? "MONTHLY" : product?.plan === "Weekly" ? "WEEKLY" : "DAILY",
+        pickUpLocation : selectedPlanType === "pickup" ? selectedPickupOption : selectedPlanType === "delivery" ? selectedDeliveryOption : "",
+        startDate: new Date(),
+        endDate: expiredIn,
+        totalMeals: product?.plan === "Monthly" ? product?.selectedMeal : product?.plan === "Weekly" ? product?.selectedMeal : 0,
+        mealType: product?.foodCategory?.toUpperCase(),
+      };
+
+  
+      const response = await makePayment(paymentData).unwrap();
+      if (response?.success && response?.url) {
+        const url = response?.url;
+        window.location.href = url;
+      } else {
+        toast.success("Subscription confirmed successfully.")
+        navigate("/payment-success")
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
   return (
     <div className="p-5 flex flex-col gap-8">
@@ -103,6 +146,8 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             Pickup option <span className="text-[#DE3C4B]">*</span>
           </label>
           <select
+          value={selectedPickupOption}
+          onChange={handlePickupChange}
             name="pickupOption"
             id="pickupOption"
             className="bg-[#6e788305] px-[18px] py-[14px] rounded-lg border border-[#6e78831f] focus:outline-none"
@@ -128,6 +173,8 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             Delivery option <span className="text-[#DE3C4B]">*</span>
           </label>
           <select
+          value={selectedDeliveryOption}
+          onChange={(e) => setSelectedDeliveryOption(e.target.value)}
             name="deliveryOption"
             id="deliveryOption"
             className="bg-[#6e788305] px-[18px] py-[14px] rounded-lg border border-[#6e78831f] focus:outline-none"
@@ -248,8 +295,13 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
       </div>
 
       {/* Payment Button */}
-      <button className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold">
-        Proceed to Pay €{totalPrice}
+      <button onClick={handleMakePayment} className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold">
+        {
+          isLoading ?
+          "Please wait..."
+          :
+          `Proceed to Pay €${totalPrice}`
+        }
       </button>
 
       {/* Payment Methods */}
@@ -263,3 +315,9 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
 };
 
 export default CheckoutForm;
+
+
+// {
+// 	"isPaid": true,
+// 	"status":"APPROVED"
+// }

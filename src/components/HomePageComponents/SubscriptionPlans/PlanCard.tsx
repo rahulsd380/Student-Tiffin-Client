@@ -14,6 +14,7 @@ type TMeal = {
 };
 
 export type TSelectedPlanData = {
+  productId:string;
   name?: string;
   foodCategory?: string;
   madeOf?: string;
@@ -24,7 +25,7 @@ export type TSelectedPlanData = {
   collectionPrice?: number;
   price?: number;
   meals?: TMeal[];
-  selectedMeal?: number;
+  selectedMeal?: number | string;
 };
 
 const PlanCard = ({
@@ -36,8 +37,10 @@ const PlanCard = ({
   isDeliverySelected: boolean;
   planMode?: any;
 }) => {
+  console.log(data)
   const [openModal, setOpenModal] = useState(false);
-  const [selectedMeal, setSelectedMeal] = useState("24 Meals");
+  const [selectedMeal, setSelectedMeal] = useState<number>(data.meals?.[0]?.mealsQuantity || 20);
+  console.log(selectedMeal)
 
   // Find the selected meal's pricing details if meals exist
   const selectedMealData = data.meals?.find(
@@ -55,30 +58,28 @@ const PlanCard = ({
   };
 
   const handleGetItNow = () => {
-    // Initialize the selected plan data structure
     const selectedPlanData: TSelectedPlanData = {
+      productId : data?.productId,
       name: data?.name,
       foodCategory: data?.foodCategory,
       madeOf: data?.madeOf,
       plan: data?.plan,
       availability: data?.availability,
+      selectedMeal,
     };
 
-    // For Daily and Weekly plans, store the prices and other details
     if (data.plan === "Daily" || data.plan === "Weekly") {
       selectedPlanData.priceBefore = data.priceBefore;
       selectedPlanData.deliveryPrice = data.deliveryPrice;
       selectedPlanData.collectionPrice = data.collectionPrice;
 
-      // If delivery or collection is selected, adjust the price
       selectedPlanData.price = !isDeliverySelected
         ? data.deliveryPrice
         : data.collectionPrice;
     }
 
-    // For Monthly plans, include meal details, pricing, and selected meal data
     if (data.plan === "Monthly" && data.meals) {
-      const selectedMealData = data.meals?.find(
+      const selectedMealData = data.meals.find(
         (meal: any) => meal.mealsQuantity === selectedMeal
       );
 
@@ -89,18 +90,16 @@ const PlanCard = ({
         collectionPrice: meal.collectionPrice,
       }));
 
-      selectedPlanData.selectedMeal = Number(selectedMeal); // Ensure it's a number
+      selectedPlanData.selectedMeal = selectedMeal;
       selectedPlanData.price = !isDeliverySelected
         ? selectedMealData?.deliveryPrice
         : selectedMealData?.collectionPrice;
 
-      // Check that price is a number, fallback to 0 if undefined
       if (typeof selectedPlanData.price !== "number") {
         selectedPlanData.price = 0;
       }
     }
 
-    // Store to localStorage
     localStorage.setItem("selectedPlan", JSON.stringify(selectedPlanData));
   };
 
@@ -125,7 +124,7 @@ const PlanCard = ({
                         : "bg-[#F9F9F9] text-[#8D9095]"
                     }`}
                   >
-                    {meal.mealsQuantity}
+                    {meal.mealsQuantity} Meals
                   </button>
                 ))}
               </div>
