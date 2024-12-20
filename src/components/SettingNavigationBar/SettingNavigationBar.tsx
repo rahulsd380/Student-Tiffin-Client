@@ -35,7 +35,7 @@ const SettingNavigationBar = () => {
             key={idx}
             className={`${
               location.pathname === item.path ? "bg-[#F9F9F9]" : "bg-white"
-            } p-[10px] leading-5 text-[#424B54] transition-all duration-300 flex items-center gap-[6px] rounded-lg w-fit whitespace-nowrap`}
+            } p-[10px] leading-5 text-[#424B54] transition-all duration-300 flex items-center gap-[6px] rounded-lg w-fit md:w-full whitespace-nowrap`}
           >
             <img src={item.icon} alt="" className="size-5" />
             {item.label}

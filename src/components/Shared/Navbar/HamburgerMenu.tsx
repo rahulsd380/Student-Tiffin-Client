@@ -3,8 +3,20 @@ import { Link, useLocation } from "react-router-dom";
 import { ICONS } from "../../../assets";
 import { navLinks } from "./navlinks";
 import { useModal } from "../../../context/ModalContext";
+import { useSelector } from "react-redux";
+import { useCurrentUser } from "../../../redux/Features/Auth/authSlice";
 
+export type TUser = {
+  userId: string;
+  name: string;
+  email: string;
+  role: string;
+  iat: number;
+  exp: number;
+  _id?: string;
+};
 const HamburgerMenu = () => {
+  const user = useSelector(useCurrentUser) as TUser | null;
   const location = useLocation();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
@@ -82,21 +94,24 @@ const HamburgerMenu = () => {
           ))}
         </div>
 
-        <div className="flex flex-col gap-5 px-5">
-                <button
-                  onClick={handleOpenLogin}
-                  className="px-6 py-3 rounded-xl border border-[#DE3C4B] text-[#DE3C4B] font-semibold"
-                >
-                  Sign In
-                </button>
+        {
+          !user &&
+          <div className="flex flex-col gap-5 px-5">
+          <button
+            onClick={handleOpenLogin}
+            className="px-6 py-3 rounded-xl border border-[#DE3C4B] text-[#DE3C4B] font-semibold"
+          >
+            Sign In
+          </button>
 
-                <button
-                  onClick={handleOpenSignup}
-                  className="px-6 py-3 text-white bg-primary-gradient rounded-xl font-semibold border border-[#DE3C4B]"
-                >
-                  Sign Up
-                </button>
-              </div>
+          <button
+            onClick={handleOpenSignup}
+            className="px-6 py-3 text-white bg-primary-gradient rounded-xl font-semibold border border-[#DE3C4B]"
+          >
+            Sign Up
+          </button>
+        </div>
+        }
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-white px-5 md:px-10 xl:px-0 py-4 border-b border-[#E6E6E6]">
+    <div className="bg-white px-5 md:px-10 xl:px-0 py-4 border-b border-[#E6E6E6] sticky top-0 z-10">
       <Container>
         <div className="font-Poppins flex items-center justify-between">
           <Link to={"/"}>

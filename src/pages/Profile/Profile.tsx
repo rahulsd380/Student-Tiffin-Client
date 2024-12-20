@@ -21,16 +21,14 @@ type TFormValues = {
 const Profile = () => {
   const [updateProfile, { isLoading }] = useUpdateProfileMutation();
   const { data } = useGetMeQuery({});
-  console.log(data);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue, // Use setValue to programmatically set form values
+    setValue,
   } = useForm<TFormValues>();
-
-  // Set default values once data is fetched
+  
   useEffect(() => {
     if (data?.data) {
       setValue("firstName", data.data.firstName || "");
