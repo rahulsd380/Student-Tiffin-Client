@@ -4,9 +4,10 @@ import { useModal } from "../../context/ModalContext";
 import Input2 from "../Shared/Input/Input2";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "../../redux/Features/Auth/authApi";
+// import { useLoginMutation } from "../../redux/Features/Auth/authApi";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../../redux/Features/Auth/authSlice";
+import axios from "axios";
 
 interface FormValues {
   email: string;
@@ -26,7 +27,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const [login, { isLoading: isLoginIn }] = useLoginMutation();
+  // const [login, { isLoading: isLoginIn }] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,16 +36,29 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
+
     try {
-      const res = await login(loginData).unwrap();
-      const user = res.user;
+      const response = await axios.post(
+        "https://student-tiffin-backend.vercel.app/api/v1/auth/login",
+        loginData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      const user = response.data.user;
+
+      // Display success message
       toast.success("Logged in successfully.");
 
       // Set the user in Redux state
       dispatch(setUser({ user }));
+
+      // Close modal and navigate to home
       setOpenModal(false);
       navigate("/");
     } catch (err) {
+      console.error(err);
       toast.error("Invalid email or password!");
     }
   };
@@ -84,11 +98,18 @@ const Login = () => {
           </div>
         </div>
 
-        <button
+        {/* <button
           type="submit"
           className="px-6 py-3 text-white bg-[#DE3C4B] rounded-xl font-semibold w-full"
         >
           {isLoginIn ? "Login in..." : "Login"}
+        </button> */}
+
+        <button
+          type="submit"
+          className="px-6 py-3 text-white bg-[#DE3C4B] rounded-xl font-semibold w-full"
+        >
+          Login
         </button>
       </form>
 

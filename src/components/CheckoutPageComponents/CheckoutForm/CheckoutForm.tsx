@@ -131,7 +131,7 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
       };
   
       const response = await axios.post('https://student-tiffin-backend.vercel.app/api/v1/subscription/create', paymentData, {
-        withCredentials: true, // Include credentials in the request
+        withCredentials: true,
       });
   
       if (response?.data?.success && response?.data?.url) {
