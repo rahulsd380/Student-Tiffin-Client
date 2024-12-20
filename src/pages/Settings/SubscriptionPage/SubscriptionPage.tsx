@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SubscriptionsCard from "../../../components/SubscriptionsPageComponents/SubscriptionsCard/SubscriptionsCard";
 import SubscriptionCardLoader from "../../../components/Loaders/SubscriptionCardLoader/SubscriptionCardLoader";
+import NoRecentOrder from "../../../components/RecentOrdersPageComponents/NoRecentOrder/NoRecentOrder";
 
 export type TSubscription = {
   _id: string;
@@ -45,7 +46,7 @@ const SubscriptionPage = () => {
     fetchSubscriptions();
   }, []);
 
-  if (!loading) {
+  if (loading) {
     return (
       <div className="flex flex-col gap-8 mt-8">
         <SubscriptionCardLoader/>
@@ -60,7 +61,9 @@ const SubscriptionPage = () => {
 
   return (
     <div className="flex flex-col gap-8 mt-8">
-      {subscriptions.map((subscription: TSubscription) => (
+      {
+      subscriptions?.length > 0 ?
+      subscriptions.map((subscription: TSubscription) => (
         <SubscriptionsCard
           key={subscription?._id}
           variant={
@@ -72,7 +75,11 @@ const SubscriptionPage = () => {
           }
           {...subscription}
         />
-      ))}
+      ))
+      :
+      <NoRecentOrder message="No Subscription Purchased"/>
+    
+    }
     </div>
   );
 };

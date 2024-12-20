@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { ICONS } from "../../../assets";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { TSelectedPlanData } from "../../HomePageComponents/SubscriptionPlans/PlanCard";
 
 type TCheckoutDetailsProps = {
   heading: string;
-  product?: TSelectedPlanData| null;
-  selectedOption?:string;
-  totalPrice?:number;
+  product?: TSelectedPlanData | null;
+  selectedOption?: string;
+  totalPrice?: number;
   setTotalPrice?: (totalPrice: number) => void;
+  expiredIn?: string;
 };
 const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
   heading,
@@ -16,11 +17,9 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
   selectedOption,
   totalPrice,
   setTotalPrice,
-  expiredIn
+  expiredIn,
 }) => {
   // const [expiredIn, setExpiredIn] = useState<string>("");
-
-  
 
   useEffect(() => {
     if (setTotalPrice) {
@@ -31,7 +30,6 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
       }
     }
   }, [selectedOption, product?.price, setTotalPrice]);
-  
 
   // useEffect(() => {
   //   const calculateExpiration = () => {
@@ -76,10 +74,6 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
 
   // console.log(planPrice);
 
-
-
-
-
   return (
     <div className="bg-[#293241] rounded-t-none md:rounded-t-xl p-6 font-Poppins flex flex-col gap-5">
       {/* Heading */}
@@ -118,9 +112,7 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
       {/* Subtotal */}
       <div className="flex items-center justify-between border-b border-[#ffffff26] pb-5 border-dashed">
         <h1 className="text-white font-medium leading-5">Subtotal</h1>
-        <h1 className="text-white font-medium leading-5">
-        €{product?.price}
-        </h1>
+        <h1 className="text-white font-medium leading-5">€{product?.price}</h1>
       </div>
 
       {/* Discount */}
@@ -140,9 +132,7 @@ const CheckoutDetails: React.FC<TCheckoutDetailsProps> = ({
             You Save €12 
             </div> */}
           <h1 className="text-white text-xl font-semibold leading-6">
-          €{totalPrice
-            }
-          
+            €{totalPrice}
           </h1>
         </div>
       </div>
