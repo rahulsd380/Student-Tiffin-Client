@@ -3,25 +3,9 @@ import axios from "axios";
 import SubscriptionsCard from "../../../components/SubscriptionsPageComponents/SubscriptionsCard/SubscriptionsCard";
 import SubscriptionCardLoader from "../../../components/Loaders/SubscriptionCardLoader/SubscriptionCardLoader";
 import NoRecentOrder from "../../../components/RecentOrdersPageComponents/NoRecentOrder/NoRecentOrder";
+import { TSubscription } from "./subscription.types";
 
-export type TSubscription = {
-  _id: string;
-  name: string;
-  productId: string;
-  user: string;
-  total: number;
-  paymentType: "ONLINE" | "COD";
-  duration: "MONTHLY" | "WEEKLY" | "DAILY";
-  startDate: string;
-  endDate: string;
-  totalMeals: number;
-  mealType: "MEAT" | "VEG";
-  isPaid: boolean;
-  status: "PENDING" | "APPROVED" | "EXPIRED";
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-};
+
 
 const SubscriptionPage = () => {
   const [subscriptions, setSubscriptions] = useState<TSubscription[]>([]);
@@ -46,6 +30,8 @@ const SubscriptionPage = () => {
     fetchSubscriptions();
   }, []);
 
+  const subscriptionData = subscriptions.filter(subscription => subscription?.duration !== "DAILY")
+
   if (loading) {
     return (
       <div className="flex flex-col gap-8 mt-8">
@@ -56,14 +42,14 @@ const SubscriptionPage = () => {
   }
 
   if (error) {
-    return <p>Something went wring!!</p>
+    return <p>Something went wrong!!</p>
   }
 
   return (
     <div className="flex flex-col gap-8 mt-8">
       {
-      subscriptions?.length > 0 ?
-      subscriptions.map((subscription: TSubscription) => (
+      subscriptionData?.length > 0 ?
+      subscriptionData.map((subscription: TSubscription) => (
         <SubscriptionsCard
           key={subscription?._id}
           variant={

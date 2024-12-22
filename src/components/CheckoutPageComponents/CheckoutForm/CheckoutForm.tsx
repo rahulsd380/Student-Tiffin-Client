@@ -91,9 +91,7 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
   //   }
   // };
 
-
   const handleMakePayment = async () => {
-
     try {
       const paymentData = {
         name: product?.name,
@@ -129,11 +127,15 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             : 0,
         mealType: product?.foodCategory?.toUpperCase(),
       };
-  
-      const response = await axios.post('https://student-tiffin-backend.vercel.app/api/v1/subscription/create', paymentData, {
-        withCredentials: true,
-      });
-  
+
+      const response = await axios.post(
+        "https://student-tiffin-backend.vercel.app/api/v1/subscription/create",
+        paymentData,
+        {
+          withCredentials: true,
+        }
+      );
+
       if (response?.data?.success && response?.data?.url) {
         const url = response?.data?.url;
         window.location.href = url;
