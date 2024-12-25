@@ -9,6 +9,7 @@ import { TSelectedPlanData } from "../../HomePageComponents/SubscriptionPlans/Pl
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import axios from "axios";
+import Spinner from "../../Loaders/Spinner/Spinner";
 
 type TCheckoutFormProps = {
   selectedPlanType: string;
@@ -32,7 +33,7 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
 }) => {
   const [selectedPickupOption, setSelectedPickupOption] = useState("");
   const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("");
-  console.log(selectedPickupOption);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   // const [makePayment, { isLoading }] = useMakePaymentMutation();
   console.log(product);
@@ -91,8 +92,15 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
   //   }
   // };
 
+  // Function to make payment
   const handleMakePayment = async () => {
+    if (selectedPickupOption === "" && selectedDeliveryOption === "") {
+      toast.error("Please select a pickup or delivery option.");
+      return;
+    }
+
     try {
+      setIsLoading(true);
       const paymentData = {
         name: product?.name,
         productId: product?.productId,
@@ -101,30 +109,30 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
           product?.plan === "Monthly"
             ? "ONLINE"
             : product?.plan === "Weekly"
-            ? "ONLINE"
-            : paymentMode === "cod"
-            ? "COD"
-            : "ONLINE",
+              ? "ONLINE"
+              : paymentMode === "cod"
+                ? "COD"
+                : "ONLINE",
         duration:
           product?.plan === "Monthly"
             ? "MONTHLY"
             : product?.plan === "Weekly"
-            ? "WEEKLY"
-            : "DAILY",
+              ? "WEEKLY"
+              : "DAILY",
         pickUpLocation:
           selectedPlanType === "pickup"
             ? selectedPickupOption
             : selectedPlanType === "delivery"
-            ? selectedDeliveryOption
-            : "",
+              ? selectedDeliveryOption
+              : "",
         startDate: new Date(),
         endDate: expiredIn,
         totalMeals:
           product?.plan === "Monthly"
             ? product?.selectedMeal
             : product?.plan === "Weekly"
-            ? product?.selectedMeal
-            : 0,
+              ? product?.selectedMeal
+              : 0,
         mealType: product?.foodCategory?.toUpperCase(),
       };
 
@@ -147,6 +155,8 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
     } catch (error) {
       console.error(error);
       toast.error("An error occurred while processing the payment.");
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -164,9 +174,8 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             className="appearance-none size-4 border-2 border-[#6E7883] rounded-full checked:border-[#DE3C4B] checked:ring-2 checked:ring-[#DE3C4B] checked:ring-offset-2 checked:bg-[#DE3C4B]"
           />
           <span
-            className={`text-[16px] leading-5 ${
-              selectedOption === "pickup" ? "text-[#424B54]" : "text-[#6E7883]"
-            }`}
+            className={`text-[16px] leading-5 ${selectedOption === "pickup" ? "text-[#424B54]" : "text-[#6E7883]"
+              }`}
           >
             Pick Up / Dine-In
           </span>
@@ -182,11 +191,10 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             className="appearance-none size-4 border-2 border-[#6E7883] rounded-full checked:border-[#DE3C4B] checked:ring-2 checked:ring-[#DE3C4B] checked:ring-offset-2 checked:bg-[#DE3C4B]"
           />
           <span
-            className={`text-[16px] leading-5 ${
-              selectedOption === "delivery"
+            className={`text-[16px] leading-5 ${selectedOption === "delivery"
                 ? "text-[#424B54]"
                 : "text-[#6E7883]"
-            }`}
+              }`}
           >
             Delivery (Extra €50)
           </span>
@@ -202,11 +210,10 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             className="appearance-none size-4 border-2 border-[#6E7883] rounded-full checked:border-[#DE3C4B] checked:ring-2 checked:ring-[#DE3C4B] checked:ring-offset-2 checked:bg-[#DE3C4B]"
           />
           <span
-            className={`text-[16px] leading-5 ${
-              selectedOption === "subscribePlan"
+            className={`text-[16px] leading-5 ${selectedOption === "subscribePlan"
                 ? "text-[#424B54]"
                 : "text-[#6E7883]"
-            }`}
+              }`}
           >
             Subscribe Plan
           </span>
@@ -328,20 +335,17 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             checked={paymentMode === "cod"}
             onChange={() => setPaymentMode("cod")}
             disabled={product?.plan === "Weekly" || product?.plan === "Monthly"}
-            className={`appearance-none size-4 border-2 rounded-full ${
-              product?.plan === "Weekly" || product?.plan === "Monthly"
+            className={`appearance-none size-4 border-2 rounded-full ${product?.plan === "Weekly" || product?.plan === "Monthly"
                 ? "cursor-not-allowed opacity-50"
                 : "cursor-pointer border-[#6E7883] checked:border-[#DE3C4B] checked:ring-2 checked:ring-[#DE3C4B] checked:ring-offset-2 checked:bg-[#DE3C4B]"
-            }`}
+              }`}
           />
           <span
-            className={`text-[16px] leading-5 ${
-              paymentMode === "cod" ? "text-[#424B54]" : "text-[#6E7883]"
-            } ${
-              product?.plan === "Weekly" || product?.plan === "Monthly"
+            className={`text-[16px] leading-5 ${paymentMode === "cod" ? "text-[#424B54]" : "text-[#6E7883]"
+              } ${product?.plan === "Weekly" || product?.plan === "Monthly"
                 ? "opacity-50 cursor-not-allowed"
                 : ""
-            }`}
+              }`}
           >
             Cash on Delivery
           </span>
@@ -362,9 +366,8 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             className="appearance-none size-4 border-2 border-[#6E7883] rounded-full checked:border-[#DE3C4B] checked:ring-2 checked:ring-[#DE3C4B] checked:ring-offset-2 checked:bg-[#DE3C4B]"
           />
           <span
-            className={`text-[16px] leading-5 ${
-              paymentMode === "online" ? "text-[#424B54]" : "text-[#6E7883]"
-            }`}
+            className={`text-[16px] leading-5 ${paymentMode === "online" ? "text-[#424B54]" : "text-[#6E7883]"
+              }`}
           >
             Online
           </span>
@@ -372,18 +375,11 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
       </div>
 
       {/* Payment Button */}
-      {/* <button
-        onClick={handleMakePayment}
-        className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold"
-      >
-        {isLoading ? "Please wait..." : `Proceed to Pay €${totalPrice}`}
-      </button> */}
-
       <button
         onClick={handleMakePayment}
-        className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold"
+        className="p-5 text-white bg-[#DE3C4B] rounded-xl text-lg leading-6 font-semibold flex items-center justify-center"
       >
-        {`Proceed to Pay €${totalPrice}`}
+        {isLoading ? <Spinner /> : `Proceed to Pay €${totalPrice}`}
       </button>
 
       {/* Payment Methods */}
@@ -397,8 +393,3 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
 };
 
 export default CheckoutForm;
-
-// {
-// 	"isPaid": true,
-// 	"status":"APPROVED"
-// }

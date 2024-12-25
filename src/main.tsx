@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ModalProvider>
       <Provider store={store}>
         <RouterProvider router={router} />
-        <Toaster position="top-center" />
+        <Toaster position="top-center" richColors />
       </Provider>
       </ModalProvider>
     {/* </UserProvider> */}

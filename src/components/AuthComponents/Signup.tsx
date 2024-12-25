@@ -73,7 +73,7 @@ const Signup = () => {
           error={errors.password}
         />
         <Input2
-          label="Password"
+          label="Confirm Password"
           name="confirm_password"
           type="password"
           placeholder="Must be at least 6 Characters"
