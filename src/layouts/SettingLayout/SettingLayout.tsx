@@ -4,6 +4,7 @@ import Footer from "../../components/Shared/Footer/Footer";
 import Container from "../../components/Shared/Container/Container";
 import SettingNavigationBar from "../../components/SettingNavigationBar/SettingNavigationBar";
 import { ICONS } from "../../assets";
+import ScrollToTop from "../../hooks/scrollToTop";
 
 const SettingLayout = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const SettingLayout = () => {
 
   return (
     <div className="">
+      <ScrollToTop/>
       <Navbar />
       <div className="px-5 md:px-10 xl:px-0 bg-[#F4F8FA]">
         <Container>

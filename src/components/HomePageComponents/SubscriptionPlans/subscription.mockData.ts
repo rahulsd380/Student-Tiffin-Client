@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 export const weeklyData = [
     {
         productId : "3",
@@ -98,11 +99,11 @@ export const dailyData = [
 ];
 
 export const deliveryPoints = [
-    "Dublin City University",
-    "Dublin Business School",
-    "Griffith College Dublin",
-    "University College Dublin",
-    "Maynooth University",
+    // "Dublin City University",
+    // "Dublin Business School",
+    // "Griffith College Dublin",
+    // "University College Dublin",
+    // "Maynooth University",
     "Dublin 1",
     "Dublin 2",
     "Dublin 7",
@@ -110,5 +111,5 @@ export const deliveryPoints = [
 ];
 
 export const collectionPoints = [
-    "Spade Enterprise Centre", "North King Street", "Smithfield, Dublin 7"
+    "Spade Enterprise Centre, North King Street, Smithfield, Dublin 7"
 ];

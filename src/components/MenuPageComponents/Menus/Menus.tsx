@@ -45,8 +45,6 @@ const Menus = () => {
             name:"Seasonal Veg",
             menuType: "VEG"
         },
-        
-        
         {
             img : IMAGES.salad,
             name:"Salad",

@@ -31,12 +31,11 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
   totalPrice,
   expiredIn,
 }) => {
-  const [selectedPickupOption, setSelectedPickupOption] = useState("");
+  const [selectedPickupOption, setSelectedPickupOption] = useState("Spade Enterprise Centre, North King Street, Smithfield, Dublin 7");
   const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   // const [makePayment, { isLoading }] = useMakePaymentMutation();
-  console.log(product);
   const planTypes = ["Daily", "Weekly", "Monthly"];
 
   const [paymentMode, setPaymentMode] = useState<"cod" | "online">("cod");
@@ -236,11 +235,11 @@ const CheckoutForm: React.FC<TCheckoutFormProps> = ({
             id="pickupOption"
             className="bg-[#6e788305] px-[18px] py-[14px] rounded-lg border border-[#6e78831f] focus:outline-none"
           >
-            <option value="" selected disabled>
+            {/* <option value="" disabled>
               Select a pickup option
-            </option>
+            </option> */}
             {collectionPoints.map((point, index) => (
-              <option key={index} value={point}>
+              <option selected key={index} value={point}>
                 {point}
               </option>
             ))}

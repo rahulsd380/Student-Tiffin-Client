@@ -14,7 +14,7 @@ type TMeal = {
 };
 
 export type TSelectedPlanData = {
-  productId:string;
+  productId: string;
   name?: string;
   foodCategory?: string;
   madeOf?: string;
@@ -32,11 +32,11 @@ const PlanCard = ({
   data,
   isDeliverySelected,
 }: // planMode,
-{
-  data: any;
-  isDeliverySelected: boolean;
-  planMode?: any;
-}) => {
+  {
+    data: any;
+    isDeliverySelected: boolean;
+    planMode?: any;
+  }) => {
   console.log(data)
   const [openModal, setOpenModal] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState<number>(data.meals?.[0]?.mealsQuantity || 20);
@@ -59,7 +59,7 @@ const PlanCard = ({
 
   const handleGetItNow = () => {
     const selectedPlanData: TSelectedPlanData = {
-      productId : data?.productId,
+      productId: data?.productId,
       name: data?.name,
       foodCategory: data?.foodCategory,
       madeOf: data?.madeOf,
@@ -118,11 +118,10 @@ const PlanCard = ({
                   <button
                     onClick={() => setSelectedMeal(meal.mealsQuantity)}
                     key={index}
-                    className={`py-[6px] px-[10px] font-Poppins font-medium leading-5 border-[#0000001a] border-none rounded-full ${
-                      selectedMeal === meal.mealsQuantity
+                    className={`py-[6px] px-[10px] font-Poppins font-medium leading-5 border-[#0000001a] border-none rounded-full ${selectedMeal === meal.mealsQuantity
                         ? "bg-[#E9EBED] text-[#293241]"
                         : "bg-[#F9F9F9] text-[#8D9095]"
-                    }`}
+                      }`}
                   >
                     {meal.mealsQuantity} Meals
                   </button>
@@ -139,11 +138,10 @@ const PlanCard = ({
               <button
                 onClick={() => setSelectedMeal(meal.mealsQuantity)}
                 key={index}
-                className={`py-[6px] px-[10px] font-Poppins font-medium leading-5 border-[#0000001a] border-none rounded-full ${
-                  selectedMeal === meal.mealsQuantity
+                className={`py-[6px] px-[10px] font-Poppins font-medium leading-5 border-[#0000001a] border-none rounded-full ${selectedMeal === meal.mealsQuantity
                     ? "bg-[#E9EBED] text-[#293241]"
                     : "bg-[#F9F9F9] text-[#8D9095]"
-                }`}
+                  }`}
               >
                 {meal.mealsQuantity}
               </button>
@@ -212,17 +210,16 @@ const PlanCard = ({
             {data.plan === "Weekly"
               ? "per week"
               : data.plan === "Daily"
-              ? "per meal + delivery charges"
-              : "per month"}
+                ? "per meal + delivery charges"
+                : "per month"}
           </p>
         </div>
 
         <Link
           to={"/checkout"}
           onClick={handleGetItNow}
-          className={`${
-            data.foodCategory === "Meat" ? "bg-[#DE3C4B]" : "bg-[#21CC00]"
-          } p-4 size-[56px] rounded-full flex items-center justify-center`}
+          className={`${data.foodCategory === "Meat" ? "bg-[#DE3C4B]" : "bg-[#21CC00]"
+            } p-4 size-[56px] rounded-full flex items-center justify-center`}
         >
           <img src={ICONS.rightArrowWhite} alt="arrow" />
         </Link>

@@ -60,7 +60,12 @@ const MenuCard = ({ menu }: { menu: any }) => {
         }  rounded-md p-1 text-[#030] text-xs uppercase absolute top-3 left-3`}
       >
         {/* {menu.menuType} */}
-        veg
+        {
+          menu.menuType === "VEG" ?
+          "VEG"
+          :
+          "NON VEG (100% Halal)"
+        }
       </div>
       <div className="bg-[#FFEBEC] flex items-center justify-center rounded-t-2xl p-3">
         <img
