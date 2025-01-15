@@ -1,7 +1,7 @@
 import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import Input from "../Input/Input";
 import emailjs from "@emailjs/browser";
-import { useRef } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { toast } from "sonner";
 
 // Define the form values type
@@ -13,10 +13,11 @@ type FormValues = {
 };
 
 type TProps = {
-  classNames?:string;
-}
+  classNames?: string;
+  setOpenModal?: Dispatch<SetStateAction<boolean>>
+};
 
-const ContactUsForm:React.FC<TProps> = ({classNames}) => {
+const ContactUsForm: React.FC<TProps> = ({ classNames, setOpenModal }) => {
   const methods = useForm<FormValues>({
     defaultValues: {
       fullName: "",
@@ -28,12 +29,15 @@ const ContactUsForm:React.FC<TProps> = ({classNames}) => {
 
   const { handleSubmit, register, formState: { errors } } = methods;
 
-  // Ref for the form element
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+
   const form = useRef<HTMLFormElement>(null);
 
-  // Send email function with types
   const sendEmail: SubmitHandler<FormValues> = () => {
     if (!form.current) return;
+
+    setIsLoading(true);
 
     emailjs
       .sendForm(
@@ -44,16 +48,23 @@ const ContactUsForm:React.FC<TProps> = ({classNames}) => {
       )
       .then(
         () => {
-          toast("Thanks for your interest. We will contact with you soon!", {
+          setIsLoading(false);
+          setIsSent(true);
+          toast("Thanks for your interest. We will contact you soon!", {
             style: {
               padding: "10px",
               borderRadius: "5px",
             },
             duration: 3000,
           });
+          setTimeout(() => {
+            setIsSent(false);
+            setOpenModal && setOpenModal((prev) => !prev);
+          }, 3000);
         },
         (error) => {
-          console.log(error);
+          setIsLoading(false);
+          console.error(error);
           toast.error("Failed! Try again.");
         }
       );
@@ -74,9 +85,7 @@ const ContactUsForm:React.FC<TProps> = ({classNames}) => {
           label="Email"
           name="from_email"
           placeholder="e.g., johndoe@site.com"
-          validation={{
-            required: "Email is required",
-          }}
+          isOptional={true}
         />
         <Input
           label="Mobile Number"
@@ -91,16 +100,14 @@ const ContactUsForm:React.FC<TProps> = ({classNames}) => {
         <div className="flex flex-col gap-2">
           <label htmlFor="message" className="text-[#6E7883] font-Poppins leading-5">
             Message
-            <span className="text-[#DE3C4B]">*</span>
           </label>
           <textarea
-            // id="message"
             rows={6}
             className={`bg-[#6e788305] px-[18px] py-[14px] rounded-lg border ${
               errors.message ? "border-[#DE3C4B]" : "border-[#6e78831f]"
             } focus:outline-none`}
             placeholder="Write message here..."
-            {...register("message", { required: "Message is required" })}
+            {...register("message")}
           />
           {errors.message && (
             <p className="text-[#DE3C4B] text-sm mt-1">
@@ -113,9 +120,12 @@ const ContactUsForm:React.FC<TProps> = ({classNames}) => {
         <div className="flex justify-end bg-white border-t border-[#43ff641f]">
           <button
             type="submit"
-            className="px-8 py-4 text-white bg-primary-gradient shadow-custom-shadow border border-white-opacity-25 rounded-2xl text-xl leading-5 font-semibold tracking-tighter mt-6"
+            className={`px-8 py-4 text-white ${
+              isSent ? "bg-green-500" : "bg-primary-gradient"
+            } shadow-custom-shadow border border-white-opacity-25 rounded-2xl text-xl leading-5 font-semibold tracking-tighter mt-6`}
+            disabled={isLoading}
           >
-            Submit
+            {isLoading ? "Loading..." : isSent ? "Sent" : "Submit"}
           </button>
         </div>
       </form>

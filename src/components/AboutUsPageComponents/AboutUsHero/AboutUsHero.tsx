@@ -44,7 +44,7 @@ const AboutUsHero = () => {
           classNames={"h-[578px] overflow-y-auto p-4 md:p-8"}
         >
           {/* Form */}
-          <ContactUsForm />
+          <ContactUsForm setOpenModal={setOpenModal} />
         </Modal1>
       </Container>
       <div className="mt-[64px] md:mt-[96px] xl:mt-[128px]">

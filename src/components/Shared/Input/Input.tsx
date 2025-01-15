@@ -1,45 +1,49 @@
-  import { useFormContext, RegisterOptions } from "react-hook-form";
+import { useFormContext, RegisterOptions } from "react-hook-form";
 
-  interface TextInputProps {
-    label: string;
-    name: string;
-    placeholder?: string;
-    validation?: RegisterOptions;
-    type?: string;
-  }
+interface TextInputProps {
+  label: string;
+  name: string;
+  placeholder?: string;
+  validation?: RegisterOptions;
+  type?: string;
+  isOptional?: boolean;
+}
 
-  const Input: React.FC<TextInputProps> = ({
-    label,
-    name,
-    placeholder,
-    validation,
-    type = "text",
-  }) => {
-    const {
-      register,
-      formState: { errors },
-    } = useFormContext();
+const Input: React.FC<TextInputProps> = ({
+  label,
+  name,
+  placeholder,
+  validation,
+  type = "text",
+  isOptional = false
+}) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
-    return (
-      <div className="flex flex-col gap-2">
-        <label htmlFor={name} className="text-[#6E7883] font-Poppins leading-5">
-          {label}
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={name} className="text-[#6E7883] font-Poppins leading-5">
+        {label}
+        {
+          !isOptional &&
           <span className="text-[#DE3C4B]">*</span>
-        </label>
-        <input
-          type={type}
-          id={name}
-          className={`bg-[#6e788305] px-[18px] py-[14px] rounded-lg border ${
-            errors[name] ? "border-[#DE3C4B]" : "border-[#6e78831f]"
+        }
+      </label>
+      <input
+        type={type}
+        id={name}
+        className={`bg-[#6e788305] px-[18px] py-[14px] rounded-lg border ${errors[name] ? "border-[#DE3C4B]" : "border-[#6e78831f]"
           } focus:outline-none`}
-          placeholder={placeholder}
-          {...register(name, validation)}
-        />
-        {errors[name] && (
-          <p className="text-[#DE3C4B] text-sm mt-1">{errors[name]?.message as string}</p>
-        )}
-      </div>
-    );
-  };
+        placeholder={placeholder}
+        {...register(name, validation)}
+      />
+      {errors[name] && (
+        <p className="text-[#DE3C4B] text-sm mt-1">{errors[name]?.message as string}</p>
+      )}
+    </div>
+  );
+};
 
-  export default Input;
+export default Input;
